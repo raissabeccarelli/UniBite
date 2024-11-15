@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_gUWHsKMwEe-bsOAfoFtT4A" name="UML">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_gUWHsKMwEe-bsOAfoFtT4A" name="UML">
   <packageImport xmi:type="uml:PackageImport" xmi:id="_ga-7MKMwEe-bsOAfoFtT4A">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_P5_jMKMyEe-qspyc8rZx3w" name="Utente"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_cUkNgKMyEe-qspyc8rZx3w" name="Studente/Docente">
+    <generalization xmi:type="uml:Generalization" xmi:id="_WziYcKMzEe-qspyc8rZx3w" general="_P5_jMKMyEe-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_eojpYKMyEe-qspyc8rZx3w" name="Esterno">
+    <generalization xmi:type="uml:Generalization" xmi:id="_UtG3cKMzEe-qspyc8rZx3w" general="_P5_jMKMyEe-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_3PCP4KMyEe-qspyc8rZx3w" name="Gestione mensa">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_tODy0KM1Ee-qspyc8rZx3w">
+      <body>Extension Point:&#xD;
+Effettua la registrazione&#xD;
+Condition:&#xD;
+Utente non registrato&#xD;
+</body>
+    </ownedComment>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ey5bsKMzEe-qspyc8rZx3w" name="Ordina">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_H_5vkKM0Ee-qspyc8rZx3w" name="ExtensionPoint2"/>
+      <include xmi:type="uml:Include" xmi:id="_95-BYKMzEe-qspyc8rZx3w" addition="_5M0VwKMzEe-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_5M0VwKMzEe-qspyc8rZx3w" name="Consulta pietanze">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_SE_JMKM0Ee-qspyc8rZx3w" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Aw3WAKM0Ee-qspyc8rZx3w" name="Elimina piatto selezionato">
+      <extend xmi:type="uml:Extend" xmi:id="_H_36YKM0Ee-qspyc8rZx3w" extendedCase="_ey5bsKMzEe-qspyc8rZx3w" extensionLocation="_H_5vkKM0Ee-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NMRGwKM0Ee-qspyc8rZx3w" name="Vedi ingredienti/allergeni">
+      <extend xmi:type="uml:Extend" xmi:id="_SE-iIKM0Ee-qspyc8rZx3w" extendedCase="_5M0VwKMzEe-qspyc8rZx3w" extensionLocation="_SE_JMKM0Ee-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Pt4ScKM1Ee-qspyc8rZx3w" name="Log In">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_lhHVQKM1Ee-qspyc8rZx3w" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_h8wdsKM1Ee-qspyc8rZx3w" name="Registrazione">
+      <extend xmi:type="uml:Extend" xmi:id="_lhGuMKM1Ee-qspyc8rZx3w" extendedCase="_Pt4ScKM1Ee-qspyc8rZx3w" extensionLocation="_lhHVQKM1Ee-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bUq58KM2Ee-qspyc8rZx3w" name="Aggiungi pietanza">
+      <include xmi:type="uml:Include" xmi:id="_l8fNMKM2Ee-qspyc8rZx3w" addition="_i2nocKM2Ee-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_i2nocKM2Ee-qspyc8rZx3w" name="Imposta quantità"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_JBHNkKM3Ee-qspyc8rZx3w" name="Effettua pagamento"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aG2mgKM3Ee-qspyc8rZx3w" name="Conto universitario personale">
+      <generalization xmi:type="uml:Generalization" xmi:id="_em2m8KM3Ee-qspyc8rZx3w" general="_JBHNkKM3Ee-qspyc8rZx3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_gvtJ0KM3Ee-qspyc8rZx3w" name="Alla cassa">
+      <generalization xmi:type="uml:Generalization" xmi:id="_nErH0KM3Ee-qspyc8rZx3w" general="_JBHNkKM3Ee-qspyc8rZx3w"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_n7WN8KMzEe-qspyc8rZx3w" memberEnd="_n8D_oKMzEe-qspyc8rZx3w _n8HC8KMzEe-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_n8BjYKMzEe-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_n8CKcKMzEe-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_n8D_oKMzEe-qspyc8rZx3w" name="ordina" type="_ey5bsKMzEe-qspyc8rZx3w" association="_n7WN8KMzEe-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_n8HC8KMzEe-qspyc8rZx3w" name="utente" type="_P5_jMKMyEe-qspyc8rZx3w" association="_n7WN8KMzEe-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_-nTMAKM0Ee-qspyc8rZx3w" name="Personale"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZciJEKM1Ee-qspyc8rZx3w" memberEnd="_ZcjXMqM1Ee-qspyc8rZx3w _ZcjXM6M1Ee-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZcjXMKM1Ee-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZcjXMaM1Ee-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZcjXMqM1Ee-qspyc8rZx3w" name="log in" type="_Pt4ScKM1Ee-qspyc8rZx3w" association="_ZciJEKM1Ee-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZcjXM6M1Ee-qspyc8rZx3w" name="studente/docente" type="_cUkNgKMyEe-qspyc8rZx3w" association="_ZciJEKM1Ee-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bKuwQKM1Ee-qspyc8rZx3w" memberEnd="_bKv-YqM1Ee-qspyc8rZx3w _bKwlcKM1Ee-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bKv-YKM1Ee-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bKv-YaM1Ee-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bKv-YqM1Ee-qspyc8rZx3w" name="log in" type="_Pt4ScKM1Ee-qspyc8rZx3w" association="_bKuwQKM1Ee-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bKwlcKM1Ee-qspyc8rZx3w" name="personale" type="_-nTMAKM0Ee-qspyc8rZx3w" association="_bKuwQKM1Ee-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_gka8UKM2Ee-qspyc8rZx3w" memberEnd="_gkcKcqM2Ee-qspyc8rZx3w _gkcxgKM2Ee-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gkcKcKM2Ee-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gkcKcaM2Ee-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_gkcKcqM2Ee-qspyc8rZx3w" name="aggiugni pietanza" type="_bUq58KM2Ee-qspyc8rZx3w" association="_gka8UKM2Ee-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_gkcxgKM2Ee-qspyc8rZx3w" name="personale" type="_-nTMAKM0Ee-qspyc8rZx3w" association="_gka8UKM2Ee-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LZR-0KM3Ee-qspyc8rZx3w" memberEnd="_LZTM8qM3Ee-qspyc8rZx3w _LZT0AKM3Ee-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LZTM8KM3Ee-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LZTM8aM3Ee-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LZTM8qM3Ee-qspyc8rZx3w" name="effettua pagamento" type="_JBHNkKM3Ee-qspyc8rZx3w" association="_LZR-0KM3Ee-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_LZT0AKM3Ee-qspyc8rZx3w" name="studente/docente" type="_cUkNgKMyEe-qspyc8rZx3w" association="_LZR-0KM3Ee-qspyc8rZx3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pL0agKM3Ee-qspyc8rZx3w" memberEnd="_pL1ooaM3Ee-qspyc8rZx3w _pL1ooqM3Ee-qspyc8rZx3w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pL1BkKM3Ee-qspyc8rZx3w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pL1ooKM3Ee-qspyc8rZx3w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pL1ooaM3Ee-qspyc8rZx3w" name="alla cassa" type="_gvtJ0KM3Ee-qspyc8rZx3w" association="_pL0agKM3Ee-qspyc8rZx3w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pL1ooqM3Ee-qspyc8rZx3w" name="esterno" type="_eojpYKMyEe-qspyc8rZx3w" association="_pL0agKM3Ee-qspyc8rZx3w"/>
+  </packagedElement>
 </uml:Model>
