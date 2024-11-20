@@ -134,4 +134,98 @@ Primo piatto selezionato</body>
     <ownedEnd xmi:type="uml:Property" xmi:id="_yJ-cwKWyEe-kDqyrLavQEw" name="database" type="_X-jRsKWyEe-kDqyrLavQEw" association="_yJ8nkKWyEe-kDqyrLavQEw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_yJ-cwaWyEe-kDqyrLavQEw" name="crea ricetta" type="_iYf_gKWbEe-uEMP7yfi8kA" association="_yJ8nkKWyEe-kDqyrLavQEw"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_4vaPsKZiEe-CDP28a83xCw" name="Totem">
+    <region xmi:type="uml:Region" xmi:id="_6l86kKZiEe-CDP28a83xCw" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_PZZ7YKZjEe-CDP28a83xCw" source="__gEEIKZiEe-CDP28a83xCw" target="_F3bO0KZjEe-CDP28a83xCw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_GXbtEKc-Ee-xdJmvQUELiw" source="_F3bO0KZjEe-CDP28a83xCw" target="__dTMgKc9Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_uj2tsKc-Ee-xdJmvQUELiw" name="clicca studente/docente" source="__dTMgKc9Ee-xdJmvQUELiw" target="_YF0aYKc-Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_1kLV0Kc-Ee-xdJmvQUELiw" source="_YF0aYKc-Ee-xdJmvQUELiw" target="_y_X2wKc-Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_dyIAcKc_Ee-xdJmvQUELiw" name="clicca registrati" source="_y_X2wKc-Ee-xdJmvQUELiw" target="_PXWY8Kc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_u97lIKc_Ee-xdJmvQUELiw" name="clicca invio [dati sbagliati]" source="_qAOVAKc_Ee-xdJmvQUELiw" target="_YF0aYKc-Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_8vsr4Kc_Ee-xdJmvQUELiw" name="clicca invio [dati corretti]" source="_qAOVAKc_Ee-xdJmvQUELiw" target="_3agI0Kc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_FdzEcKdAEe-xdJmvQUELiw" name="clicca esterno" source="__dTMgKc9Ee-xdJmvQUELiw" target="_3agI0Kc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_aBJzwKdAEe-xdJmvQUELiw" name="clicca vai al carrello" source="_3agI0Kc_Ee-xdJmvQUELiw" target="_OkEFYKdAEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_dHWvsKdAEe-xdJmvQUELiw" name="clicca torna indietro" source="_OkEFYKdAEe-xdJmvQUELiw" target="_3agI0Kc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_h-e2sKdAEe-xdJmvQUELiw" name="clicca aggiungi piatto" source="_3agI0Kc_Ee-xdJmvQUELiw" target="_3agI0Kc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_rCtQQKdAEe-xdJmvQUELiw" name="clicca elimina piatto" source="_OkEFYKdAEe-xdJmvQUELiw" target="_OkEFYKdAEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_3ePR8KdCEe-xdJmvQUELiw" name="clicca vai al pagamento" source="_OkEFYKdAEe-xdJmvQUELiw" target="_en0yAKdCEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_DJWOMKdDEe-xdJmvQUELiw" source="_en0yAKdCEe-xdJmvQUELiw" target="_BbjPoKdDEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_P-xogKdDEe-xdJmvQUELiw" name="clicca paga con credito virtuale [utente=studente/docente]" source="_BbjPoKdDEe-xdJmvQUELiw" target="_F6FQcKdDEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_RuxmgKdDEe-xdJmvQUELiw" name="clicca paga in cassa" source="_BbjPoKdDEe-xdJmvQUELiw" target="_IE130KdDEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_S6tOIKdDEe-xdJmvQUELiw" name="after(10sec)" source="_F6FQcKdDEe-xdJmvQUELiw" target="_IE130KdDEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_EIvZMKdEEe-xdJmvQUELiw" name="clicca logout" source="_IE130KdDEe-xdJmvQUELiw" target="_ALSFIKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_Ha4fYKdEEe-xdJmvQUELiw" name="after(20sec)" source="_ALSFIKdEEe-xdJmvQUELiw" target="_F3bO0KZjEe-CDP28a83xCw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_aYtbUKdEEe-xdJmvQUELiw" name="clicca personale" source="__dTMgKc9Ee-xdJmvQUELiw" target="_T8oIsKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_sLybYKdEEe-xdJmvQUELiw" source="_T8oIsKdEEe-xdJmvQUELiw" target="_fnU1QKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_uci9EKdEEe-xdJmvQUELiw" name="clicca invio [credenziali sbagliate]" source="_fnU1QKdEEe-xdJmvQUELiw" target="_T8oIsKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_1kvu0KdEEe-xdJmvQUELiw" name="clicca invio [credenziali corrette]" source="_fnU1QKdEEe-xdJmvQUELiw" target="_hRLvAKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_82bzwKdEEe-xdJmvQUELiw" source="_hRLvAKdEEe-xdJmvQUELiw" target="_qcfA8KdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_973KwKdEEe-xdJmvQUELiw" name="clicca aggiungi al menù" source="_qcfA8KdEEe-xdJmvQUELiw" target="_hRLvAKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_Dp5roKdFEe-xdJmvQUELiw" name="clicca imposta quantità" source="_qcfA8KdEEe-xdJmvQUELiw" target="_hRLvAKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_Yo7DQKdFEe-xdJmvQUELiw" name="clicca aggiungi ricetta" source="_qcfA8KdEEe-xdJmvQUELiw" target="_NWY_EKdFEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_e4T9sKdFEe-xdJmvQUELiw" name="clicca termina" source="_qcfA8KdEEe-xdJmvQUELiw" target="_I50tIKdFEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_lJmVkKdFEe-xdJmvQUELiw" name="clicca torna a modificare" source="_St2L8KdFEe-xdJmvQUELiw" target="_hRLvAKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_rtjx0KdFEe-xdJmvQUELiw" name="clicca aggiungi" source="_NWY_EKdFEe-xdJmvQUELiw" target="_hRLvAKdEEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_x7QDIKdFEe-xdJmvQUELiw" source="_I50tIKdFEe-xdJmvQUELiw" target="_St2L8KdFEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_y_hjkKdFEe-xdJmvQUELiw" name="clicca termina" source="_St2L8KdFEe-xdJmvQUELiw" target="_TaNisKdFEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_4qpTUKdFEe-xdJmvQUELiw" name="after(10sec)" source="_TaNisKdFEe-xdJmvQUELiw" target="_F3bO0KZjEe-CDP28a83xCw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_FIxn8KdGEe-xdJmvQUELiw" name="clicca login" source="_y_X2wKc-Ee-xdJmvQUELiw" target="__2XTIKdFEe-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_F8EtIKdGEe-xdJmvQUELiw" source="__2XTIKdFEe-xdJmvQUELiw" target="_qAOVAKc_Ee-xdJmvQUELiw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_Gc_B0KdGEe-xdJmvQUELiw" name="clicca invio" source="_PXWY8Kc_Ee-xdJmvQUELiw" target="__2XTIKdFEe-xdJmvQUELiw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="__gEEIKZiEe-CDP28a83xCw" name="/spento"/>
+      <subvertex xmi:type="uml:State" xmi:id="_F3bO0KZjEe-CDP28a83xCw" name="Pronto"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="__dTMgKc9Ee-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_YF0aYKc-Ee-xdJmvQUELiw" name="Accesso">
+        <doActivity xmi:type="uml:Activity" xmi:id="_rZfDcKc-Ee-xdJmvQUELiw" name="mostra tipo accesso"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_y_X2wKc-Ee-xdJmvQUELiw" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_PXWY8Kc_Ee-xdJmvQUELiw" name="Registrazione">
+        <doActivity xmi:type="uml:Activity" xmi:id="_TXDIsKc_Ee-xdJmvQUELiw" name="inserisci dati"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_qAOVAKc_Ee-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_3agI0Kc_Ee-xdJmvQUELiw" name="Menù">
+        <doActivity xmi:type="uml:Activity" xmi:id="_7Put8Kc_Ee-xdJmvQUELiw" name="mostra piatti disponibil"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_OkEFYKdAEe-xdJmvQUELiw" name="Carrello">
+        <doActivity xmi:type="uml:Activity" xmi:id="_RzsqIKdAEe-xdJmvQUELiw" name="mostra piatti selezionati"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_en0yAKdCEe-xdJmvQUELiw" name="Pagamento">
+        <doActivity xmi:type="uml:Activity" xmi:id="_qAG44KdCEe-xdJmvQUELiw" name="mostra metodi pagamento"/>
+        <entry xmi:type="uml:Activity" xmi:id="_k622UKdCEe-xdJmvQUELiw" name="applica sconto"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_BbjPoKdDEe-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_F6FQcKdDEe-xdJmvQUELiw" name="Credito virtuale">
+        <doActivity xmi:type="uml:Activity" xmi:id="_LNUrsKdDEe-xdJmvQUELiw" name="mostra il credito"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_IE130KdDEe-xdJmvQUELiw" name="Scontrino">
+        <doActivity xmi:type="uml:Activity" xmi:id="_N0ce8KdDEe-xdJmvQUELiw" name="mostra il resoconto"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_ALSFIKdEEe-xdJmvQUELiw" name="Logout"/>
+      <subvertex xmi:type="uml:State" xmi:id="_T8oIsKdEEe-xdJmvQUELiw" name="Login P">
+        <doActivity xmi:type="uml:Activity" xmi:id="_XAzrYKdEEe-xdJmvQUELiw" name="inserisci credenziali"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_fnU1QKdEEe-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_hRLvAKdEEe-xdJmvQUELiw" name="Menù P">
+        <doActivity xmi:type="uml:Activity" xmi:id="_m5R_8KdEEe-xdJmvQUELiw" name="mostra tutti piatti disponibili"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_qcfA8KdEEe-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_I50tIKdFEe-xdJmvQUELiw" name="Conferma">
+        <doActivity xmi:type="uml:Activity" xmi:id="_LugbQKdFEe-xdJmvQUELiw" name="mostra piatti selezionati"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_NWY_EKdFEe-xdJmvQUELiw" name="Ricetta">
+        <doActivity xmi:type="uml:Activity" xmi:id="_QbFfIKdFEe-xdJmvQUELiw" name="inserisci ingrediente ed allergeni"/>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_St2L8KdFEe-xdJmvQUELiw" name="" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_TaNisKdFEe-xdJmvQUELiw" name="Uscita"/>
+      <subvertex xmi:type="uml:State" xmi:id="__2XTIKdFEe-xdJmvQUELiw" name="Login SD">
+        <doActivity xmi:type="uml:Activity" xmi:id="_CakVQKdGEe-xdJmvQUELiw" name="inserisci credenziali"/>
+      </subvertex>
+    </region>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_HqhkIKZjEe-CDP28a83xCw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hql1kKZjEe-CDP28a83xCw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
 </uml:Model>
