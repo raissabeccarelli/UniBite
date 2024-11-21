@@ -279,6 +279,140 @@ Primo piatto selezionato</body>
     <message xmi:type="uml:Message" xmi:id="_IQvo8KgLEe-NXpUzF1acWw" name="registrati(nome, cognome, matricola, password, e-mail universitaria, fascia Isee) " messageSort="asynchCall" receiveEvent="_IQw3EKgLEe-NXpUzF1acWw" sendEvent="_IQwQAKgLEe-NXpUzF1acWw"/>
     <message xmi:type="uml:Message" xmi:id="_cGOloKgLEe-NXpUzF1acWw" name="enter(nome, cognome, matricola, password, e-mail universitaria, fascia Isee) " messageSort="asynchCall" receiveEvent="_cGQa0agLEe-NXpUzF1acWw" sendEvent="_cGQa0KgLEe-NXpUzF1acWw"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_iZYaMKgVEe-yLIS_6tEJ_g" name="Totem">
+    <packagedElement xmi:type="uml:Class" xmi:id="_oCcUcKgVEe-yLIS_6tEJ_g" name="Utente" isAbstract="true">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ycEasKgVEe-yLIS_6tEJ_g" name="prenotazione" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bQYIcKgbEe-yLIS_6tEJ_g" name="pagamento" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7lIQ8KgVEe-yLIS_6tEJ_g" name="Esterno">
+      <generalization xmi:type="uml:Generalization" xmi:id="_ASuogKgWEe-yLIS_6tEJ_g" general="_oCcUcKgVEe-yLIS_6tEJ_g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9M2csKgVEe-yLIS_6tEJ_g" name="Studente_Docente" visibility="public">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Bfk2IKgWEe-yLIS_6tEJ_g" general="_oCcUcKgVEe-yLIS_6tEJ_g"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VMP1EKgWEe-yLIS_6tEJ_g" name="nome" visibility="private" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Z-y-EKgWEe-yLIS_6tEJ_g" name="cognome" visibility="private" isUnique="false" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qyu1UKgWEe-yLIS_6tEJ_g" name="matricola" visibility="private" isOrdered="true" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xKx8gKgWEe-yLIS_6tEJ_g" name="email" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DIZ_sKgXEe-yLIS_6tEJ_g" name="fasciaIsee" visibility="private" type="_1-T88KgWEe-yLIS_6tEJ_g" isUnique="false" isReadOnly="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UE2SsKgXEe-yLIS_6tEJ_g" name="getNome"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_WXdOgKgXEe-yLIS_6tEJ_g" name="getCognome"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Y_zJwKgXEe-yLIS_6tEJ_g" name="getMatricola"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_dYnkIKgXEe-yLIS_6tEJ_g" name="getFasciaIsee"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gHMqQKgXEe-yLIS_6tEJ_g" name="getEmail"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_iGQX8KgXEe-yLIS_6tEJ_g" name="login" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1-T88KgWEe-yLIS_6tEJ_g" name="enumeration: FasciaIsee"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_u52mQKgXEe-yLIS_6tEJ_g" name="Piatto">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_586rEKgXEe-yLIS_6tEJ_g" name="nome" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Eh9-MKgYEe-yLIS_6tEJ_g" name="descrizione" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OGZh0KgYEe-yLIS_6tEJ_g" name="ingredienti" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ciT8UKgZEe-yLIS_6tEJ_g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_U42tEKgYEe-yLIS_6tEJ_g" name="allergeni" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ffwk4KgZEe-yLIS_6tEJ_g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fgQUIKgZEe-yLIS_6tEJ_g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nDClkKgYEe-yLIS_6tEJ_g" name="prezzoUnitario" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_tz8RoKgYEe-yLIS_6tEJ_g" name="numeroPorzioni" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8dsJQKgYEe-yLIS_6tEJ_g" name="tipoPortata" visibility="private" type="_u3gAYKgYEe-yLIS_6tEJ_g" isUnique="false"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Mx3iYKgZEe-yLIS_6tEJ_g" name="getNome"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_OXjt0KgZEe-yLIS_6tEJ_g" name="setNome"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_QavtkKgZEe-yLIS_6tEJ_g" name="getDescrizione"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_SRQjQKgZEe-yLIS_6tEJ_g" name="setDescrizione"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Uei6MKgZEe-yLIS_6tEJ_g" name="getIngredienti"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_WcDvwKgZEe-yLIS_6tEJ_g" name="setIngredienti"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_l3h_QKgZEe-yLIS_6tEJ_g" name="getAllergeni"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nh7EgKgZEe-yLIS_6tEJ_g" name="setAllergeni"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pxt84KgZEe-yLIS_6tEJ_g" name="setTipoPortata"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rq4d8KgZEe-yLIS_6tEJ_g" name="getTipoPortata"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_wpftAKgZEe-yLIS_6tEJ_g" name="getPrezzoUnitario"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yrqZEKgZEe-yLIS_6tEJ_g" name="setPrezzoUnitario"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_0xsRcKgZEe-yLIS_6tEJ_g" name="getNumeroPorzioni"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3IVYsKgZEe-yLIS_6tEJ_g" name="setNumeroPorzioni"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_u3gAYKgYEe-yLIS_6tEJ_g" name="enumeration: TipoPortata"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ndovgKgbEe-yLIS_6tEJ_g" name="Personale">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_vKEPsKgbEe-yLIS_6tEJ_g" name="username" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FJCocKgcEe-yLIS_6tEJ_g" name="piatto" type="_u52mQKgXEe-yLIS_6tEJ_g" association="_FJAMMKgcEe-yLIS_6tEJ_g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FJFEsKgcEe-yLIS_6tEJ_g"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FJIvEKgcEe-yLIS_6tEJ_g" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1t03oKgbEe-yLIS_6tEJ_g" name="creaNuovoPiatto" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-guQoKgbEe-yLIS_6tEJ_g" name="modificaPiatto" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ARfDoKgcEe-yLIS_6tEJ_g" name="login" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_b2-Y8KgcEe-yLIS_6tEJ_g" name="Account">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nwPF8KgcEe-yLIS_6tEJ_g" name="password" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qpKa4KgcEe-yLIS_6tEJ_g" name="AccountPersonale">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Cx25MKgdEe-yLIS_6tEJ_g" general="_b2-Y8KgcEe-yLIS_6tEJ_g"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2xF2AKgcEe-yLIS_6tEJ_g" name="username" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4WRrIKgcEe-yLIS_6tEJ_g" name="AccountS_D">
+      <generalization xmi:type="uml:Generalization" xmi:id="_CKk2wKgdEe-yLIS_6tEJ_g" general="_b2-Y8KgcEe-yLIS_6tEJ_g"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_AL7YwKgdEe-yLIS_6tEJ_g" name="matricolaUtente" visibility="private" isOrdered="true" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_SPE8gKgaEe-yLIS_6tEJ_g" name="Carrello" memberEnd="_SPJ1AKgaEe-yLIS_6tEJ_g _SPLDIKgaEe-yLIS_6tEJ_g" navigableOwnedEnd="_SPJ1AKgaEe-yLIS_6tEJ_g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SPH_0KgaEe-yLIS_6tEJ_g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SPIm4KgaEe-yLIS_6tEJ_g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pZf0sKgaEe-yLIS_6tEJ_g" name="piattiSelezionati" type="_u52mQKgXEe-yLIS_6tEJ_g" isUnique="false"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SPJ1AKgaEe-yLIS_6tEJ_g" name="piatto" type="_u52mQKgXEe-yLIS_6tEJ_g" association="_SPE8gKgaEe-yLIS_6tEJ_g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_38ztIKgaEe-yLIS_6tEJ_g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_39GBAKgaEe-yLIS_6tEJ_g" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SPLDIKgaEe-yLIS_6tEJ_g" name="utente" type="_oCcUcKgVEe-yLIS_6tEJ_g" association="_SPE8gKgaEe-yLIS_6tEJ_g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5uqFQKgaEe-yLIS_6tEJ_g"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5u1EYKgaEe-yLIS_6tEJ_g" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FJAMMKgcEe-yLIS_6tEJ_g" memberEnd="_FJCocKgcEe-yLIS_6tEJ_g _FJMZcKgcEe-yLIS_6tEJ_g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FJCBYKgcEe-yLIS_6tEJ_g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FJCBYagcEe-yLIS_6tEJ_g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FJMZcKgcEe-yLIS_6tEJ_g" name="personale" type="_ndovgKgbEe-yLIS_6tEJ_g" association="_FJAMMKgcEe-yLIS_6tEJ_g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_EsxtwKgdEe-yLIS_6tEJ_g" memberEnd="_Eszi8qgdEe-yLIS_6tEJ_g _Es0xEagdEe-yLIS_6tEJ_g" navigableOwnedEnd="_Es0xEagdEe-yLIS_6tEJ_g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Eszi8KgdEe-yLIS_6tEJ_g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Eszi8agdEe-yLIS_6tEJ_g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Es0xEagdEe-yLIS_6tEJ_g" name="piatto" type="_u52mQKgXEe-yLIS_6tEJ_g" association="_EsxtwKgdEe-yLIS_6tEJ_g"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Eszi8qgdEe-yLIS_6tEJ_g" name="accountpersonale" type="_qpKa4KgcEe-yLIS_6tEJ_g" aggregation="composite" association="_EsxtwKgdEe-yLIS_6tEJ_g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_K56lcKgdEe-yLIS_6tEJ_g" memberEnd="_K57MgqgdEe-yLIS_6tEJ_g _K57zkqgdEe-yLIS_6tEJ_g" navigableOwnedEnd="_K57zkqgdEe-yLIS_6tEJ_g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_K57MgKgdEe-yLIS_6tEJ_g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_K57MgagdEe-yLIS_6tEJ_g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_K57zkqgdEe-yLIS_6tEJ_g" name="studente_docente" type="_9M2csKgVEe-yLIS_6tEJ_g" association="_K56lcKgdEe-yLIS_6tEJ_g"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_K57MgqgdEe-yLIS_6tEJ_g" name="accounts_d" type="_4WRrIKgcEe-yLIS_6tEJ_g" aggregation="composite" association="_K56lcKgdEe-yLIS_6tEJ_g"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_HqhkIKZjEe-CDP28a83xCw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hql1kKZjEe-CDP28a83xCw" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
