@@ -625,7 +625,7 @@
   <notation:Diagram xmi:id="_6mDBMKZiEe-CDP28a83xCw" type="PapyrusUMLStateMachineDiagram" name="StateMachineDiagram" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_6mDBMaZiEe-CDP28a83xCw" type="StateMachine_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_6mDBMqZiEe-CDP28a83xCw" type="StateMachine_NameLabel">
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBM6ZiEe-CDP28a83xCw" width="3322" height="25"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBM6ZiEe-CDP28a83xCw" width="3322" height="21"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_6mDBNKZiEe-CDP28a83xCw" type="StateMachine_RegionCompartment">
         <children xmi:type="notation:Shape" xmi:id="_6mDBNaZiEe-CDP28a83xCw" type="Region_Shape">
@@ -997,7 +997,7 @@
           <element xmi:type="uml:Region" href="UML.uml#_6l86kKZiEe-CDP28a83xCw"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBOqZiEe-CDP28a83xCw" width="3322" height="1799"/>
         </children>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBO6ZiEe-CDP28a83xCw" y="25" width="3322" height="1799"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBO6ZiEe-CDP28a83xCw" y="21" width="3322" height="1803"/>
       </children>
       <element xmi:type="uml:StateMachine" href="UML.uml#_4vaPsKZiEe-CDP28a83xCw"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6mDBPKZiEe-CDP28a83xCw" x="-200" y="-940" width="3322" height="1824"/>
