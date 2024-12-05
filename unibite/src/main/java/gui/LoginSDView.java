@@ -46,6 +46,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow6 = new HorizontalLayout();
         H4 h4 = new H4();
         Button buttonPrimary2 = new Button();
+        Button buttonPrimary3 = new Button();
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         h1.setText("LOGIN");
@@ -127,7 +128,14 @@ public class LoginSDView extends Composite<VerticalLayout> {
         h4.setWidth("max-content");
         buttonPrimary2.setText("REGISTRATI");
         buttonPrimary2.setWidth("min-content");
-        buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);      
+        buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);  
+        
+        buttonPrimary3.setText("TORNA INDIETRO");
+        layoutColumn6.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
+        buttonPrimary3.setWidth("198px");
+        buttonPrimary3.getStyle().set("flex-grow", "1");
+        buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        
         getContent().add(h1);
         getContent().add(layoutColumn2);
         layoutColumn2.add(h6);
@@ -146,7 +154,9 @@ public class LoginSDView extends Composite<VerticalLayout> {
         layoutColumn5.add(layoutColumn6);
         layoutColumn6.add(layoutRow6);
         layoutRow6.add(h4);
-        layoutRow6.add(buttonPrimary2);        
+        layoutRow6.add(buttonPrimary2); 
+        layoutColumn6.add(buttonPrimary3); 
         buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view3"));
+        buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate(""));
     }
 }

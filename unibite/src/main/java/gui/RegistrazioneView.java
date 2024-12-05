@@ -48,6 +48,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         EmailField emailField = new EmailField();
         VerticalLayout layoutColumn4 = new VerticalLayout();
         Button buttonPrimary = new Button();
+        Button buttonPrimary3 = new Button();
         
         
         getContent().setWidth("100%");
@@ -105,6 +106,13 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         emailField.setLabel("EMAIL UNIVERSITARIA");
         emailField.setWidth("200px");
         
+        buttonPrimary3.setText("TORNA INDIETRO");
+        layoutColumn4.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
+        buttonPrimary3.setWidth("198px");
+        buttonPrimary3.getStyle().set("flex-grow", "1");
+        buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        
+        
         layoutColumn4.setWidthFull();
         layoutColumn3.setFlexGrow(1.0, layoutColumn4);
         layoutColumn4.setWidth("100%");
@@ -133,7 +141,8 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         layoutRow3.add(emailField);
         layoutColumn3.add(layoutColumn4);
         layoutColumn4.add(buttonPrimary);
-        
+        layoutColumn4.add(buttonPrimary3); 
+        buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate("my-view"));
     }
 
     record SampleItem(String value, String label, Boolean disabled) {

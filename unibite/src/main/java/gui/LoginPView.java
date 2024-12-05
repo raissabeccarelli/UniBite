@@ -1,6 +1,7 @@
 package gui;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
@@ -29,6 +30,9 @@ public class LoginPView extends Composite<VerticalLayout> {
         PasswordField passwordField = new PasswordField();
         VerticalLayout layoutColumn5 = new VerticalLayout();
         Button buttonPrimary = new Button();
+        
+        Button buttonPrimary3 = new Button();
+        
         getContent().setHeightFull();
         getContent().setWidthFull();
         h1.setText("LOGIN");
@@ -66,7 +70,14 @@ public class LoginPView extends Composite<VerticalLayout> {
         layoutColumn.setWidthFull();
         getContent().setFlexGrow(1.0, layoutColumn);
         layoutColumn.setWidth("100%");
-        layoutColumn.getStyle().set("flex-grow", "0.02");                
+        layoutColumn.getStyle().set("flex-grow", "0.02");
+        
+        buttonPrimary3.setText("TORNA INDIETRO");
+        layoutColumn5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
+        buttonPrimary3.setWidth("198px");
+        buttonPrimary3.getStyle().set("flex-grow", "1");
+        buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        
         getContent().add(h1);
         getContent().add(layoutColumn2);
         layoutColumn2.add(h6);
@@ -77,6 +88,8 @@ public class LoginPView extends Composite<VerticalLayout> {
         getContent().add(layoutColumn4);
         layoutColumn4.add(passwordField);
         layoutColumn4.add(layoutColumn5);
-        layoutColumn5.add(buttonPrimary);
+        layoutColumn5.add(buttonPrimary);       
+        layoutColumn5.add(buttonPrimary3);
+        buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate(""));
     }
 }
