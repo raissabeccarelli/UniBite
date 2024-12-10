@@ -1,5 +1,16 @@
 package controller;
 
+import java.util.List;
+
+
+import org.jooq.DSLContext;
+import org.jooq.Record2;
+
+import com.vaadin.flow.data.binder.Result;
+
+import classidb.Piatti;
+import model.Connessione;
+
 public class Piatto {
 	public String nome;	
 	public String descrizione;
@@ -17,6 +28,10 @@ public class Piatto {
 		this.prezzoUnitario = prezzoUnitario;
 		this.numeroPorzioni = numeroPorzioni;
 	}
+	public Piatto() {
+		
+	}
+	
 	
 	public String getNome() {
 		return nome;
@@ -64,6 +79,18 @@ public class Piatto {
 
 	public void setNumeroPorzioni(int numeroPorzioni) {
 		this.numeroPorzioni = numeroPorzioni;
+	}
+	
+	public static List<Record2<String,Integer>> cercaPiatti() {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		List<Record2<String,Integer>> result = dslContext
+		        .select(Piatti.PIATTI.NOME, Piatti.PIATTI.NUMEROPORZIONI)
+		        .from(Piatti.PIATTI)
+		        .fetch();
+
+		   
+		    return result;
 	}
 
 	

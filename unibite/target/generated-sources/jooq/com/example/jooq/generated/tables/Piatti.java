@@ -81,14 +81,14 @@ public class Piatti extends TableImpl<PiattiRecord> {
     public final TableField<PiattiRecord, BigDecimal> PREZZOUNITARIO = createField(DSL.name("prezzoUnitario"), SQLDataType.NUMERIC.nullable(false), this, "");
 
     /**
-     * The column <code>Piatti.numeroPorzioni</code>.
-     */
-    public final TableField<PiattiRecord, Integer> NUMEROPORZIONI = createField(DSL.name("numeroPorzioni"), SQLDataType.INTEGER, this, "");
-
-    /**
      * The column <code>Piatti.immagine</code>.
      */
     public final TableField<PiattiRecord, String> IMMAGINE = createField(DSL.name("immagine"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>Piatti.numeroPorzioni</code>.
+     */
+    public final TableField<PiattiRecord, Integer> NUMEROPORZIONI = createField(DSL.name("numeroPorzioni"), SQLDataType.INTEGER.defaultValue(DSL.field(DSL.raw("0"), SQLDataType.INTEGER)), this, "");
 
     private Piatti(Name alias, Table<PiattiRecord> aliased) {
         this(alias, aliased, null);
@@ -177,14 +177,14 @@ public class Piatti extends TableImpl<PiattiRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<String, String, String, String, Integer, BigDecimal, Integer, String> fieldsRow() {
+    public Row8<String, String, String, String, Integer, BigDecimal, String, Integer> fieldsRow() {
         return (Row8) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function8<? super String, ? super String, ? super String, ? super String, ? super Integer, ? super BigDecimal, ? super Integer, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function8<? super String, ? super String, ? super String, ? super String, ? super Integer, ? super BigDecimal, ? super String, ? super Integer, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -192,7 +192,7 @@ public class Piatti extends TableImpl<PiattiRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super String, ? super String, ? super String, ? super String, ? super Integer, ? super BigDecimal, ? super Integer, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super String, ? super String, ? super String, ? super String, ? super Integer, ? super BigDecimal, ? super String, ? super Integer, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

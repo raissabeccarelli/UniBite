@@ -4,6 +4,7 @@ import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.grid.*;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
@@ -13,11 +14,17 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.Piatto;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jooq.Record2;
 
 @PageTitle("Portale personale")
 @Route("my-view9")
@@ -35,7 +42,11 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow6 = new HorizontalLayout();
         VerticalLayout layoutColumn2 = new VerticalLayout();
         HorizontalLayout layoutRow4 = new HorizontalLayout();
-        MultiSelectListBox textItems = new MultiSelectListBox();
+       
+        List<Record2<String, Integer>> piatti = Piatto.cercaPiatti(); 
+        Grid<Record2<String, Integer>> grid = new Grid<>();
+
+        
         HorizontalLayout layoutRow5 = new HorizontalLayout();
         VerticalLayout layoutColumn3 = new VerticalLayout();
         NumberField numberField = new NumberField();
@@ -91,8 +102,24 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutRow4.addClassName(Gap.MEDIUM);
         layoutRow4.setWidth("100%");
         layoutRow4.getStyle().set("flex-grow", "1");
-        textItems.setWidth("500px");
-        setMultiSelectListBoxSampleData(textItems);
+       
+       grid.setWidthFull();
+     // Imposta le colonne della Grid
+        grid.addColumn(record -> record.value1())  // NOME
+             .setHeader("Nome Piatto")
+             .setKey("nome");
+        
+        grid.addColumn(record -> record.value2())  // NUMEROPORZIONI
+             .setHeader("Numero Porzioni")
+             .setKey("numeroPorzioni");
+
+        // Imposta i dati da visualizzare nella Grid
+        grid.setItems(piatti);
+
+        
+     
+        
+        
         layoutRow5.setHeightFull();
         layoutRow4.setFlexGrow(1.0, layoutRow5);
         layoutRow5.addClassName(Gap.MEDIUM);
@@ -127,26 +154,16 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutRow3.add(layoutRow6);
         getContent().add(layoutColumn2);
         layoutColumn2.add(layoutRow4);
-        layoutRow4.add(textItems);
+        layoutRow4.add(grid);
         layoutRow4.add(layoutRow5);
         layoutRow5.add(layoutColumn3);
         layoutColumn3.add(numberField);
         layoutColumn3.add(buttonPrimary3);
         layoutColumn3.add(layoutColumn4);
         layoutColumn3.add(buttonPrimary4);
+        
+        
     }
+ 
 
-    record SampleItem(String value, String label, Boolean disabled) {
-    }
-
-    private void setMultiSelectListBoxSampleData(MultiSelectListBox multiSelectListBox) {
-        List<SampleItem> sampleItems = new ArrayList<>();
-        sampleItems.add(new SampleItem("first", "First", null));
-        sampleItems.add(new SampleItem("second", "Second", null));
-        sampleItems.add(new SampleItem("third", "Third", Boolean.TRUE));
-        sampleItems.add(new SampleItem("fourth", "Fourth", null));
-        multiSelectListBox.setItems(sampleItems);
-        multiSelectListBox.setItemLabelGenerator(item -> ((SampleItem) item).label());
-        multiSelectListBox.setItemEnabledProvider(item -> !Boolean.TRUE.equals(((SampleItem) item).disabled()));
-    }
 }
