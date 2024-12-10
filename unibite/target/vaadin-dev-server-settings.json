@@ -9,7 +9,7 @@
   "devBundleOutput": "C:/Users/giaco/Desktop/Università/UniBite/unibite/target/dev-bundle/webapp",
   "devBundleStatsOutput": "C:/Users/giaco/Desktop/Università/UniBite/unibite/target/dev-bundle/config",
   "jarResourcesFolder": "C:/Users/giaco/Desktop/Università/UniBite/unibite/src/main/frontend/generated/jar-resources",
-  "themeName": "",
+  "themeName": "unibite",
   "clientServiceWorkerSource": "C:\\Users\\giaco\\Desktop\\Università\\UniBite\\unibite\\target\\sw.ts",
   "pwaEnabled": false,
   "offlineEnabled": false,

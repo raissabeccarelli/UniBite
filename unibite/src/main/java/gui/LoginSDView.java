@@ -13,11 +13,15 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.StudenteDocente;
 
 @PageTitle("Login SD")
 @Route("my-view")
@@ -28,12 +32,10 @@ public class LoginSDView extends Composite<VerticalLayout> {
         VerticalLayout layoutColumn2 = new VerticalLayout();
         H6 h6 = new H6();
         Hr hr = new Hr();
-        
-        
-        
+         
         HorizontalLayout layoutRow = new HorizontalLayout();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
-        TextField textField = new TextField();
+        IntegerField matricola = new IntegerField();
         VerticalLayout layoutColumn3 = new VerticalLayout();
         HorizontalLayout layoutRow3 = new HorizontalLayout();
         PasswordField passwordField = new PasswordField();
@@ -71,9 +73,9 @@ public class LoginSDView extends Composite<VerticalLayout> {
         layoutRow2.getStyle().set("flex-grow", "1");
         layoutRow2.setAlignItems(Alignment.CENTER);
         layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
-        textField.setLabel("MATRICOLA");
-        layoutRow2.setAlignSelf(FlexComponent.Alignment.CENTER, textField);
-        textField.setWidth("200px");
+        matricola.setLabel("MATRICOLA");
+        layoutRow2.setAlignSelf(FlexComponent.Alignment.CENTER, matricola);
+        matricola.setWidth("200px");
         layoutColumn3.setWidthFull();
         layoutColumn2.setFlexGrow(1.0, layoutColumn3);
         layoutColumn3.setWidth("100%");
@@ -142,7 +144,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
         layoutColumn2.add(hr);
         layoutColumn2.add(layoutRow);
         layoutRow.add(layoutRow2);       
-        layoutRow2.add(textField);
+        layoutRow2.add(matricola);
         layoutColumn2.add(layoutColumn3);
         layoutColumn3.add(layoutRow3);
         layoutRow3.add(passwordField);
@@ -158,5 +160,16 @@ public class LoginSDView extends Composite<VerticalLayout> {
         layoutColumn6.add(buttonPrimary3); 
         buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view3"));
         buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate(""));
+        
+        StudenteDocente sd = new StudenteDocente();
+        buttonPrimary.addClickListener(event -> {
+        if(sd.login(matricola.getValue(), passwordField.getValue()) == true) {
+       	UI.getCurrent().navigate("my-view4");
+       	}});
+       //aggiungere pwd errata
+        
+        
     }
+    
+    
 }
