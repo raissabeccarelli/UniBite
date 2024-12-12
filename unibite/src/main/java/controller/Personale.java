@@ -4,6 +4,7 @@ import org.jooq.DSLContext;
 
 import classidb.Accountpersonale;
 import classidb.Accountutenti;
+import classidb.Piatti;
 import model.Connessione;
 
 public class Personale {
@@ -26,8 +27,10 @@ public class Personale {
 		return passwordP;
 	}
 	
-	public void creaNuovoPiatto() {
-				
+	public void creaNuovoPiatto(String n, String d, String in, String all, TipoPortata t, String c) {
+		float pr=0;
+		int po=0;
+		Piatto p = new Piatto(n, d, in, all, t, pr, c, po);
 	}
 	
 	public void modificaPiatto() {

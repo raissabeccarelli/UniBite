@@ -2,10 +2,12 @@ package gui;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.*;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.listbox.MultiSelectListBox;
@@ -20,6 +22,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import controller.Piatto;
+import controller.StudenteDocente;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,9 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 
     public PortalepersonaleView() {
         HorizontalLayout layoutRow = new HorizontalLayout();
-        Icon icon = new Icon();
+        Image image = new Image("images/logo.png", "logo");
+        image.setWidth("100px"); // Imposta la larghezza
+        image.setHeight("100px"); // Imposta l'altezza
         HorizontalLayout layoutRow2 = new HorizontalLayout();
         H3 h3 = new H3();
         Button buttonPrimary = new Button();
@@ -62,8 +67,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutRow.setHeight("min-content");
         layoutRow.setAlignItems(Alignment.CENTER);
         layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
-        icon.setIcon("lumo:user");
-        icon.setSize("50px");
+ 
         layoutRow2.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutRow2);
         layoutRow2.addClassName(Gap.MEDIUM);
@@ -76,7 +80,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         textSmall.setText(
                 "Per aggiungere un piatto al menù, selezionalo e clicca \"Aggiungi quantità\". Per eliminarlo dal menù, selezionalo e clicca \"Elimina piatto\". Per aggiungere una ricetta seleziona \"Aggiungi ricetta\".");
-        textSmall.setWidth("480px");
+        textSmall.setWidth("5000px");
         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         layoutRow3.setWidthFull();
         getContent().setFlexGrow(1.0, layoutRow3);
@@ -103,7 +107,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutRow4.setWidth("100%");
         layoutRow4.getStyle().set("flex-grow", "1");
        
-       grid.setWidthFull();
+       grid.setWidth("5000px");
      // Imposta le colonne della Grid
         grid.addColumn(record -> record.value1())  // NOME
              .setHeader("Nome Piatto")
@@ -144,7 +148,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         buttonPrimary4.setWidth("179px");
         buttonPrimary4.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         getContent().add(layoutRow);
-        layoutRow.add(icon);
+        layoutRow.add(image);
         layoutRow.add(layoutRow2);
         layoutRow2.add(h3);
         layoutRow.add(buttonPrimary);
@@ -162,7 +166,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutColumn3.add(layoutColumn4);
         layoutColumn3.add(buttonPrimary4);
         
-        
+        buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view10"));
     }
  
 

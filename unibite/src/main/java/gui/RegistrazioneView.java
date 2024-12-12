@@ -150,10 +150,9 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         layoutColumn4.add(buttonPrimary3); 
         buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate("my-view"));
         
-        StudenteDocente sd = new StudenteDocente();
         buttonPrimary.addClickListener(event -> {
-        sd.registrazione(matricola.getValue(), passwordField.getValue(), textField.getValue(), 
-        		textField2.getValue(), emailField.getValue(), comboBox.getValue());
+        StudenteDocente sd = new StudenteDocente (matricola.getValue(), passwordField.getValue(), textField.getValue(), 
+        		textField2.getValue(), emailField.getValue(), comboBox.getValue(), 0);
        	UI.getCurrent().navigate("my-view");
        	});
     }

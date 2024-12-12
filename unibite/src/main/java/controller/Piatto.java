@@ -1,5 +1,6 @@
 package controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -15,18 +16,28 @@ public class Piatto {
 	public String nome;	
 	public String descrizione;
 	public String ingredienti;
+	public String allergeni;
 	public TipoPortata tipo;
 	public float prezzoUnitario;
 	public int numeroPorzioni;
+	public String immagine;
 	
-	public Piatto(String nome, String descrizione, String ingredienti, TipoPortata tipo, float prezzoUnitario,
-			int numeroPorzioni) {
+	public Piatto(String nome, String descrizione, String ingredienti, String allergeni, TipoPortata tipo, float prezzoUnitario, 
+			String immagine,int numeroPorzioni) {
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.ingredienti = ingredienti;
+		this.allergeni = allergeni;
 		this.tipo = tipo;
 		this.prezzoUnitario = prezzoUnitario;
 		this.numeroPorzioni = numeroPorzioni;
+		this.immagine = immagine;
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		dslContext.insertInto(Piatti.PIATTI)
+        .columns(Piatti.PIATTI.NOME, Piatti.PIATTI.DESCRIZIONE, Piatti.PIATTI.INGREDIENTI,
+        		Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO,Piatti.PIATTI.IMMAGINE)
+        .values(nome, descrizione, ingredienti, allergeni, tipo.getValue(), BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine).execute();
 	}
 	public Piatto() {
 		
@@ -69,8 +80,20 @@ public class Piatto {
 		return prezzoUnitario;
 	}
 
-	public void setPrezzoUnitario(float prezzoUnitario) {
-		this.prezzoUnitario = prezzoUnitario;
+	public float setPrezzoUnitario(TipoPortata t) {	
+		
+	if(t.getValue()==1) {
+		this.prezzoUnitario = (float) 01.99;
+	}else if(t.getValue()==2) {
+		this.prezzoUnitario = (float) 02.69;
+	}else if(t.getValue()==3) {
+		this.prezzoUnitario = (float)00.69;
+	}else if(t.getValue()==4) {
+		this.prezzoUnitario = (float)00.99;
+	}else {
+		this.prezzoUnitario = (float)00.0;
+	}
+	return this.prezzoUnitario;
 	}
 
 	public int getNumeroPorzioni() {
