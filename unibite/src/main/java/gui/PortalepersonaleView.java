@@ -15,12 +15,14 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import controller.Personale;
 import controller.Piatto;
 import controller.StudenteDocente;
 
@@ -54,7 +56,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         
         HorizontalLayout layoutRow5 = new HorizontalLayout();
         VerticalLayout layoutColumn3 = new VerticalLayout();
-        NumberField numberField = new NumberField();
+        IntegerField numberField = new IntegerField();
         Button buttonPrimary3 = new Button();
         VerticalLayout layoutColumn4 = new VerticalLayout();
         Button buttonPrimary4 = new Button();
@@ -137,7 +139,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutColumn3.setAlignItems(Alignment.CENTER);
         numberField.setLabel("Inserisci porzioni");
         numberField.setWidth("179px");
-        buttonPrimary3.setText("Aggiungi quantità");
+        buttonPrimary3.setText("Aggiungi il numero di porzioni");
         buttonPrimary3.setWidth("min-content");
         buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         layoutColumn4.setWidthFull();
@@ -167,6 +169,12 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
         layoutColumn3.add(buttonPrimary4);
         
         buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view10"));
+        
+        buttonPrimary3.addClickListener(event -> {
+            Personale p = new Personale();
+            p.aggiungiPorzioni(grid.getSelectedItems() ,numberField.getValue());
+            UI.getCurrent().refreshCurrentRoute(isAttached());
+           	});
     }
  
 

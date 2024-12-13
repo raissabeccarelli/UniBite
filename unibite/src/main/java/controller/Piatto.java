@@ -100,8 +100,13 @@ public class Piatto {
 		return numeroPorzioni;
 	}
 
-	public void setNumeroPorzioni(int numeroPorzioni) {
-		this.numeroPorzioni = numeroPorzioni;
+	public void setNumeroPorzioni(String nome, int numeroPorzioni) {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, numeroPorzioni).where(Piatti.PIATTI.NOME.eq(nome)).execute();
+		
+		
+		
 	}
 	
 	public static List<Record2<String,Integer>> cercaPiatti() {

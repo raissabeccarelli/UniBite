@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.Set;
+
 import org.jooq.DSLContext;
+import org.jooq.Record2;
 
 import classidb.Accountpersonale;
 import classidb.Accountutenti;
@@ -33,7 +36,17 @@ public class Personale {
 		Piatto p = new Piatto(n, d, in, all, t, pr, c, po);
 	}
 	
-	public void modificaPiatto() {
+	public void aggiungiPorzioni(Set<Record2<String, Integer>> dato, int quantita) {
+		Record2<String, Integer> primoRecord = dato.iterator().next();
+		String nomePiatto = primoRecord.value1();
+		Piatto piatto = new Piatto();
+		piatto.setNumeroPorzioni(nomePiatto, quantita);
+	}
+	
+	
+	
+	
+	public void eliminaPiatto() {
 		
 	}
 	
