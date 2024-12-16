@@ -21,13 +21,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Theme(value = "unibite")
 public class Application implements AppShellConfigurator {
 
-    public static void main(String[] args) {
-    	
-       Connessione connessione = Connessione.getInstance();
-       DSLContext context = connessione.getDslContext();
+	public static void main(String[] args) {
 
-       SpringApplication.run(Application.class, args);
-    	    	
-       connessione.close();       
-    }
+		Connessione connessione = Connessione.getInstance();
+		DSLContext context = connessione.getDslContext();
+
+		SpringApplication.run(Application.class, args);
+
+		connessione.close();
+	}
 }
