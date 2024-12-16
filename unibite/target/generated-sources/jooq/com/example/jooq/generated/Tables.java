@@ -4,9 +4,9 @@
 package com.example.jooq.generated;
 
 
-import classidb.Accountpersonale;
-import classidb.Accountutenti;
-import classidb.Piatti;
+import com.example.jooq.generated.tables.Accountpersonale;
+import com.example.jooq.generated.tables.Accountutenti;
+import com.example.jooq.generated.tables.Piatti;
 
 
 /**

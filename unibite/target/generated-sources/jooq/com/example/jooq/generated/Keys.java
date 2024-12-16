@@ -4,12 +4,12 @@
 package com.example.jooq.generated;
 
 
-import classidb.Accountpersonale;
-import classidb.Accountutenti;
-import classidb.Piatti;
-import recordclassidb.AccountpersonaleRecord;
-import recordclassidb.AccountutentiRecord;
-import recordclassidb.PiattiRecord;
+import com.example.jooq.generated.tables.Accountpersonale;
+import com.example.jooq.generated.tables.Accountutenti;
+import com.example.jooq.generated.tables.Piatti;
+import com.example.jooq.generated.tables.records.AccountpersonaleRecord;
+import com.example.jooq.generated.tables.records.AccountutentiRecord;
+import com.example.jooq.generated.tables.records.PiattiRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;

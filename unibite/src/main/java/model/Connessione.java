@@ -6,9 +6,13 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 import org.jooq.DSLContext;
+import org.jooq.Record1;
+import org.jooq.Result;
 import org.jooq.impl.DSL;
 
+import classidb.Accountutenti;
 import classidb.Piatti;
 import controller.Piatto;
 
@@ -52,6 +56,8 @@ public class Connessione {
 	            e.printStackTrace();
 	        }
 	    }	
+	    
+	    
 }
 
 

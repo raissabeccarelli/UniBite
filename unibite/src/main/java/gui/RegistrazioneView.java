@@ -14,14 +14,20 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.StudenteDocente;
+
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @PageTitle("Registrazione")
 @Route("my-view3")
@@ -32,7 +38,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         H6 h6 = new H6();
         Hr hr = new Hr();
         
-        NumberField numberField = new NumberField();
+        IntegerField matricola = new IntegerField();
         VerticalLayout layoutColumn2 = new VerticalLayout();
         HorizontalLayout layoutRow = new HorizontalLayout();
         TextField textField = new TextField();
@@ -43,7 +49,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         PasswordField passwordField = new PasswordField();
         VerticalLayout layoutColumn3 = new VerticalLayout();
         HorizontalLayout layoutRow3 = new HorizontalLayout();
-        ComboBox comboBox = new ComboBox();
+        ComboBox<Integer> comboBox = new ComboBox();
         HorizontalLayout layoutRow6 = new HorizontalLayout();
         EmailField emailField = new EmailField();
         VerticalLayout layoutColumn4 = new VerticalLayout();
@@ -81,8 +87,8 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         layoutRow2.setAlignItems(Alignment.CENTER);
         layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER); // Avvicina i campi
         
-        numberField.setLabel("MATRICOLA");
-        numberField.setWidth("200px");
+        matricola.setLabel("MATRICOLA");
+        matricola.setWidth("200px");
         layoutRow5.setWidth("auto"); // Riduci larghezza intermedia
         layoutRow5.getStyle().remove("flex-grow"); // Rimuovi crescita dinamica
         passwordField.setLabel("PASSWORD");
@@ -131,7 +137,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         layoutRow.add(layoutRow4);
         layoutRow.add(textField2);
         layoutColumn2.add(layoutRow2);
-        layoutRow2.add(numberField);
+        layoutRow2.add(matricola);
         layoutRow2.add(layoutRow5);
         layoutRow2.add(passwordField);
         layoutColumn2.add(layoutColumn3);
@@ -143,22 +149,30 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
         layoutColumn4.add(buttonPrimary);
         layoutColumn4.add(buttonPrimary3); 
         buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate("my-view"));
+        
+        buttonPrimary.addClickListener(event -> {
+        StudenteDocente sd = new StudenteDocente (matricola.getValue(), passwordField.getValue(), textField.getValue(), 
+        		textField2.getValue(), emailField.getValue(), comboBox.getValue(), 0);
+       	UI.getCurrent().navigate("my-view");
+       	});
     }
 
-    record SampleItem(String value, String label, Boolean disabled) {
+    private void setComboBoxSampleData(ComboBox<Integer> comboBox) {
+        // Mappa che associa i valori numerici alle etichette
+        Map<Integer, String> options = new LinkedHashMap<>();
+        options.put(1, "Fascia A");
+        options.put(2, "Fascia B");
+        options.put(3, "Fascia C");
+        options.put(4, "Fascia D");
+        options.put(5, "Fascia E");
+        options.put(6, "Fascia F");
+        options.put(7, "Fascia G");
+        // Imposta i valori numerici come elementi della ComboBox
+        comboBox.setItems(options.keySet());
+
+        // Genera l'etichetta per ogni valore numerico
+        comboBox.setItemLabelGenerator(value -> options.get(value));
     }
 
-    private void setComboBoxSampleData(ComboBox comboBox) {
-        List<SampleItem> sampleItems = new ArrayList<>();
-        sampleItems.add(new SampleItem("first", "Fascia A", null));
-        sampleItems.add(new SampleItem("second", "Fascia B", null));
-        sampleItems.add(new SampleItem("third", "Fascia C", null));
-        sampleItems.add(new SampleItem("fourth", "Fascia D", null));
-        sampleItems.add(new SampleItem("fith", "Fascia E", null));
-        sampleItems.add(new SampleItem("sixth", "Fascia F", null));
-        sampleItems.add(new SampleItem("seventh", "Fascia G", null));
-        comboBox.setItems(sampleItems);
-        comboBox.setItemLabelGenerator(item -> ((SampleItem) item).label());
-    }
     
 }

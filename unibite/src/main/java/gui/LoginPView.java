@@ -14,6 +14,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import controller.Personale;
+import controller.StudenteDocente;
+
 @PageTitle("Login P")
 @Route("my-view2")
 public class LoginPView extends Composite<VerticalLayout> {
@@ -91,5 +94,11 @@ public class LoginPView extends Composite<VerticalLayout> {
         layoutColumn5.add(buttonPrimary);       
         layoutColumn5.add(buttonPrimary3);
         buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate(""));
+        
+        Personale p = new Personale();
+        buttonPrimary.addClickListener(event -> {
+        if(p.login(textField.getValue(), passwordField.getValue()) == true) {
+       	UI.getCurrent().navigate("my-view9");
+       	}});
     }
 }

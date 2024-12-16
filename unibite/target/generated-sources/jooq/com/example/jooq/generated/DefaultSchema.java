@@ -4,16 +4,16 @@
 package com.example.jooq.generated;
 
 
+import com.example.jooq.generated.tables.Accountpersonale;
+import com.example.jooq.generated.tables.Accountutenti;
+import com.example.jooq.generated.tables.Piatti;
+
 import java.util.Arrays;
 import java.util.List;
 
 import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
-
-import classidb.Accountpersonale;
-import classidb.Accountutenti;
-import classidb.Piatti;
 
 
 /**
