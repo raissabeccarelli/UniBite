@@ -2,3 +2,4 @@
 /.sonarlint/storage/
 .target/
 .mvn/wrapper/
+.mvnw
