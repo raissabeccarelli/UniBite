@@ -3,8 +3,10 @@
 .settings
 .project
 .classpath
-target/
-mvn/wrapper/
+
+
+.target/
+.mvn/wrapper/
 
 *.iml
 .DS_Store
