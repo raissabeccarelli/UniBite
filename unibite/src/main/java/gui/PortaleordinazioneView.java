@@ -27,7 +27,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
-import classidb.Piatti;
+import classidb.*;
 import model.Connessione;
 
 @PageTitle("Portale ordinazione")
