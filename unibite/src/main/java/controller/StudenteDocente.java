@@ -5,7 +5,7 @@ import org.jooq.Record1;
 import org.jooq.Record2;
 import org.jooq.Result;
 
-import classidb.Accountutenti;
+import classidb.*;
 import model.Connessione;
 
 public class StudenteDocente extends Utente {

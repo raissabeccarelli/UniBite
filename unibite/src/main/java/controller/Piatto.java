@@ -8,7 +8,7 @@ import org.jooq.Record2;
 
 import com.vaadin.flow.data.binder.Result;
 
-import classidb.Piatti;
+import classidb.*;
 import model.Connessione;
 
 public class Piatto {

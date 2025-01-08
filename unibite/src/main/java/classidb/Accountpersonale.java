@@ -4,10 +4,8 @@
 package classidb;
 
 
-import com.example.jooq.generated.DefaultSchema;
-import com.example.jooq.generated.Keys;
-
-import recordclassidb.AccountpersonaleRecord;
+import exampleGenerati.DefaultSchema;
+import exampleGenerati.Keys;
 
 import java.util.function.Function;
 
@@ -27,6 +25,8 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
+
+import classiRecords.AccountpersonaleRecord;
 
 
 /**
@@ -99,7 +99,7 @@ public class Accountpersonale extends TableImpl<AccountpersonaleRecord> {
     }
 
     @Override
-    public UniqueKey getPrimaryKey() {
+    public UniqueKey<AccountpersonaleRecord> getPrimaryKey() {
         return Keys.ACCOUNTPERSONALE__PK_ACCOUNTPERSONALE;
     }
 

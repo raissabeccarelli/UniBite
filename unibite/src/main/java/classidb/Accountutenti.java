@@ -4,10 +4,8 @@
 package classidb;
 
 
-import com.example.jooq.generated.DefaultSchema;
-import com.example.jooq.generated.Keys;
-
-import recordclassidb.AccountutentiRecord;
+import exampleGenerati.DefaultSchema;
+import exampleGenerati.Keys;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -30,6 +28,8 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
+
+import classiRecords.AccountutentiRecord;
 
 
 /**
@@ -127,7 +127,7 @@ public class Accountutenti extends TableImpl<AccountutentiRecord> {
     }
 
     @Override
-    public List getUniqueKeys() {
+    public List<UniqueKey<AccountutentiRecord>> getUniqueKeys() {
         return Arrays.asList(Keys.ACCOUNTUTENTI__UK_ACCOUNTUTENTI_43808232);
     }
 
