@@ -746,13 +746,26 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		
 		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
 		
-		Carrello c;
-		if(sd==null) {
-			Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");
-			c = new Carrello(0000);
-		}else {
-			c = new Carrello(sd.getMatricola());
+		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");
+		
+		if (c == null) { 
+		    if (sd == null) {
+		        Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");
+		        c = new Carrello(0000);
+		        VaadinSession.getCurrent().setAttribute("CARRELLO", c); 
+		        
+		    } else {
+		        c = new Carrello(sd.getMatricola());
+		        VaadinSession.getCurrent().setAttribute("CARRELLO", c); 
+		    }
+		    
+		} else {
+		    System.out.println("Carrello già esistente nella sessione");
 		}
+		
+
+		
+		
 		buttonPrimary3.addClickListener(event -> c.aggiungiPiatto(primi1.get(Piatti.PIATTI.NOME)));
 		
 	}

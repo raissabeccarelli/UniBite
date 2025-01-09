@@ -167,9 +167,11 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		StudenteDocente sd = new StudenteDocente();
 		buttonPrimary.addClickListener(event -> {
 			if (sd.login(matricola.getValue(), passwordField.getValue()) == true) {
-				UI.getCurrent().navigate("my-view4");
-				
+				VaadinSession.getCurrent().setAttribute("SDC", null);
+		        VaadinSession.getCurrent().setAttribute("CARRELLO", null);
+		        VaadinSession.getCurrent().setAttribute("E", null);	
 				VaadinSession.getCurrent().setAttribute("SDC", sd);
+				UI.getCurrent().navigate("my-view4");
 			}
 		});
 		// aggiungere pwd errata
