@@ -19,9 +19,12 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import controller.Carrello;
 import controller.StudenteDocente;
+import controller.Utente;
 
 @PageTitle("Login SD")
 @Route("my-view")
@@ -165,6 +168,8 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		buttonPrimary.addClickListener(event -> {
 			if (sd.login(matricola.getValue(), passwordField.getValue()) == true) {
 				UI.getCurrent().navigate("my-view4");
+				
+				VaadinSession.getCurrent().setAttribute("SDC", sd);
 			}
 		});
 		// aggiungere pwd errata

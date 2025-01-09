@@ -17,7 +17,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.Carrello;
+import controller.Esterno;
 
 @PageTitle("UNIBite")
 @Route("")
@@ -112,7 +116,10 @@ public class UNIBiteView extends Composite<VerticalLayout> {
 		layoutColumn3.add(buttonPrimary2);
 		layoutColumn3.add(buttonPrimary3);
 		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate("my-view"));
-		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view4"));
+		buttonPrimary2.addClickListener(event -> {UI.getCurrent().navigate("my-view4");
+													Esterno e = new Esterno(0000);
+													VaadinSession.getCurrent().setAttribute("E", e);;
+															});
 		buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate("my-view2"));
 	}
 }

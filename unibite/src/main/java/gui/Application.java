@@ -3,6 +3,7 @@ package gui;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 
+import controller.Carrello;
 import model.Connessione;
 
 import org.jooq.DSLContext;
@@ -25,9 +26,8 @@ public class Application implements AppShellConfigurator {
 
 		Connessione connessione = Connessione.getInstance();
 		DSLContext context = connessione.getDslContext();
-
 		SpringApplication.run(Application.class, args);
-
+		
 		connessione.close();
 	}
 }

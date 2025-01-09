@@ -2,8 +2,10 @@ package gui;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.H5;
@@ -17,17 +19,29 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.function.ValueProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.Carrello;
+import controller.Piatto;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jooq.Record1;
+import org.jooq.Record2;
 
 @PageTitle("Carrello")
 @Route("my-view6")
 public class CarrelloView extends Composite<VerticalLayout> {
 
 	public CarrelloView() {
+		
+		List<Record1<String>> piatti = Carrello.getLista();
+		Grid<Record1<String>> grid = new Grid<>();
+		
 		H1 h1 = new H1();
 		VerticalLayout layoutColumn2 = new VerticalLayout();
 		Hr hr = new Hr();
@@ -74,7 +88,16 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
 		textItems.setWidth("500px");
 		textItems.setHeight("300px");
-		setMultiSelectListBoxSampleData(textItems);
+		
+		
+		grid.setWidth("500px");
+		// Imposta le colonne della Grid
+		grid.addColumn(record -> record.value1()) // NOME
+		.setHeader("Nome Piatto").setKey("nome");
+		// Imposta i dati da visualizzare nella Grid
+		grid.setItems(piatti);
+		
+		
 		layoutRow3.setWidthFull();
 		layoutColumn2.setFlexGrow(1.0, layoutRow3);
 		layoutRow3.addClassName(Gap.MEDIUM);
@@ -129,7 +152,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutColumn2.add(layoutRow);
 		layoutRow.add(layoutRow2);
 		layoutRow2.add(image);
-		layoutRow2.add(textItems);
+		layoutRow2.add(grid);
 		layoutColumn2.add(layoutRow3);
 		layoutRow3.add(h4);
 		layoutRow3.add(h5);
@@ -138,19 +161,9 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		getContent().add(layoutRow4);
 		layoutRow4.add(buttonPrimary2);
 		layoutRow4.add(buttonPrimary3);
+		
+		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view4"));
 	}
 
-	record SampleItem(String value, String label, Boolean disabled) {
-	}
-
-	private void setMultiSelectListBoxSampleData(MultiSelectListBox multiSelectListBox) {
-		List<SampleItem> sampleItems = new ArrayList<>();
-		sampleItems.add(new SampleItem("first", "First", null));
-		sampleItems.add(new SampleItem("second", "Second", null));
-		sampleItems.add(new SampleItem("third", "Third", null));
-		sampleItems.add(new SampleItem("fourth", "Fourth", null));
-		multiSelectListBox.setItems(sampleItems);
-		multiSelectListBox.setItemLabelGenerator(item -> ((SampleItem) item).label());
-		multiSelectListBox.setItemEnabledProvider(item -> !Boolean.TRUE.equals(((SampleItem) item).disabled()));
-	}
+	
 }

@@ -1,9 +1,7 @@
 package controller;
 
 import org.jooq.DSLContext;
-import org.jooq.Record1;
-import org.jooq.Record2;
-import org.jooq.Result;
+
 
 import classidb.*;
 import model.Connessione;
@@ -37,6 +35,10 @@ public class StudenteDocente extends Utente {
 
 	public StudenteDocente() {
 
+	}
+	
+	public StudenteDocente(int matricola) {
+		this.matricola=matricola;
 	}
 
 	public float getContoVirtuale() {

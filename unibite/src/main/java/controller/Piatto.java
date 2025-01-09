@@ -2,12 +2,8 @@ package controller;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 import org.jooq.DSLContext;
 import org.jooq.Record2;
-
-import com.vaadin.flow.data.binder.Result;
-
 import classidb.*;
 import model.Connessione;
 

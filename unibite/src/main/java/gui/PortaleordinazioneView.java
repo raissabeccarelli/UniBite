@@ -8,6 +8,7 @@ import org.jooq.Record2;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
@@ -25,15 +26,19 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import classidb.*;
+import controller.Carrello;
+import controller.Esterno;
+import controller.StudenteDocente;
 import model.Connessione;
 
 @PageTitle("Portale ordinazione")
 @Route("my-view4")
 public class PortaleordinazioneView extends Composite<VerticalLayout> {
-
+	
 	public PortaleordinazioneView() {
 		
 		//lista dei primi piatti
@@ -734,6 +739,21 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		layoutColumn25.add(buttonSecondary12);
 		layoutColumn25.add(buttonPrimary14);
 		
+		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view6"));
+		
+		//LOGICA DELL AGGIUNGI PIATTO
+		
+		
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
+		
+		Carrello c;
+		if(sd==null) {
+			Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");
+			c = new Carrello(0000);
+		}else {
+			c = new Carrello(sd.getMatricola());
+		}
+		buttonPrimary3.addClickListener(event -> c.aggiungiPiatto(primi1.get(Piatti.PIATTI.NOME)));
 		
 	}
 	
