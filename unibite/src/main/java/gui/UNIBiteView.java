@@ -116,9 +116,8 @@ public class UNIBiteView extends Composite<VerticalLayout> {
 		layoutColumn3.add(buttonPrimary2);
 		layoutColumn3.add(buttonPrimary3);
 		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate("my-view"));
-		buttonPrimary2.addClickListener(event -> {VaadinSession.getCurrent().setAttribute("SDC", null);
-													VaadinSession.getCurrent().setAttribute("CARRELLO", null);	
-													VaadinSession.getCurrent().setAttribute("E", null);	
+		buttonPrimary2.addClickListener(event -> {	VaadinSession.getCurrent().setAttribute("CARRELLO", null);	
+													//VaadinSession.getCurrent().setAttribute("E", null);	
         											Esterno e = new Esterno(0000);
 													VaadinSession.getCurrent().setAttribute("E", e);
 													UI.getCurrent().navigate("my-view4");

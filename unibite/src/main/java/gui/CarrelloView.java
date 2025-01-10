@@ -29,6 +29,7 @@ import controller.Piatto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.jooq.Record1;
 import org.jooq.Record2;
@@ -39,8 +40,8 @@ public class CarrelloView extends Composite<VerticalLayout> {
 
 	public CarrelloView() {
 		
-		List<Record1<String>> piatti = Carrello.getLista();
-		Grid<Record1<String>> grid = new Grid<>();
+		List<Map.Entry<String, String>> piatti = Carrello.getLista();
+		Grid<Map.Entry<String, String>> grid = new Grid<>();
 		
 		H1 h1 = new H1();
 		VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -82,7 +83,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow2.setHeightFull();
 		layoutRow.setFlexGrow(1.0, layoutRow2);
 		layoutRow2.addClassName(Gap.MEDIUM);
-		layoutRow2.setWidth("100%");
+		layoutRow2.setWidth("75%");
 		layoutRow2.getStyle().set("flex-grow", "1");
 		layoutRow2.setAlignItems(Alignment.CENTER);
 		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
@@ -90,11 +91,18 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		textItems.setHeight("300px");
 		
 		
-		grid.setWidth("500px");
-		// Imposta le colonne della Grid
-		grid.addColumn(record -> record.value1()) // NOME
-		.setHeader("Nome Piatto").setKey("nome");
-		// Imposta i dati da visualizzare nella Grid
+		grid.setWidth("600px");
+		grid.getStyle().set("flex-grow", "0");
+		// Imposta la larghezza delle colonne singolarmente
+		grid.addColumn(entry -> entry.getKey())  // Colonna per il nome del piatto
+		    .setHeader("Nome Piatto")
+		    .setKey("nome");
+		    
+
+		grid.addColumn(entry -> entry.getValue())  // Colonna per la descrizione
+		    .setHeader("Note")
+		    .setKey("note");
+		   
 		grid.setItems(piatti);
 		
 		

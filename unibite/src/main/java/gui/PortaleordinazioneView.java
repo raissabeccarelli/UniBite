@@ -739,15 +739,13 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		layoutColumn25.add(buttonSecondary12);
 		layoutColumn25.add(buttonPrimary14);
 		
+		//NAVIGAZIONE VIEW
+		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate(""));
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view6"));
 		
-		//LOGICA DELL AGGIUNGI PIATTO
-		
-		
-		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
-		
-		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");
-		
+		//LOGICA AGGIUNGI CARRELLO		
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");		
+		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");		
 		if (c == null) { 
 		    if (sd == null) {
 		        Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");
@@ -763,10 +761,93 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		    System.out.println("Carrello già esistente nella sessione");
 		}
 		
-
+		//LOGICA AGGIUNGI PIATTO
+		//PRIMI
+		buttonPrimary3.addClickListener(event -> {
+		if(checkbox.getValue()) {
+			    c.aggiungiPiattoConFormaggio(primi1.get(Piatti.PIATTI.NOME));
+		}else {
+			c.aggiungiPiatto(primi1.get(Piatti.PIATTI.NOME));
+		}	
+		});
 		
+		buttonPrimary4.addClickListener(event -> {
+			if(checkbox2.getValue()) {
+				    c.aggiungiPiattoConFormaggio(primi2.get(Piatti.PIATTI.NOME));
+			}else {
+				c.aggiungiPiatto(primi2.get(Piatti.PIATTI.NOME));
+			}	
+			});
 		
-		buttonPrimary3.addClickListener(event -> c.aggiungiPiatto(primi1.get(Piatti.PIATTI.NOME)));
+		buttonPrimary5.addClickListener(event -> {
+			if(checkbox3.getValue()) {
+				    c.aggiungiPiattoConFormaggio(primi3.get(Piatti.PIATTI.NOME));
+			}else {
+				c.aggiungiPiatto(primi3.get(Piatti.PIATTI.NOME));
+			}	
+			});
+		
+		buttonSecondary.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", primi1); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary2.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", primi2); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary3.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", primi3); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		
+		//SECONDI
+		buttonPrimary6.addClickListener(event -> c.aggiungiPiatto(secondi1.get(Piatti.PIATTI.NOME)));
+		buttonPrimary7.addClickListener(event -> c.aggiungiPiatto(secondi2.get(Piatti.PIATTI.NOME)));
+		buttonPrimary8.addClickListener(event -> c.aggiungiPiatto(secondi3.get(Piatti.PIATTI.NOME)));
+		buttonSecondary4.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi1); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary5.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi2); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary6.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi3); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		//CONTORNI
+		buttonPrimary9.addClickListener(event -> c.aggiungiPiatto(contorni1.get(Piatti.PIATTI.NOME)));
+		buttonPrimary10.addClickListener(event -> c.aggiungiPiatto(contorni2.get(Piatti.PIATTI.NOME)));
+		buttonPrimary11.addClickListener(event -> c.aggiungiPiatto(contorni3.get(Piatti.PIATTI.NOME)));
+		buttonSecondary7.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni1); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary8.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni2); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary9.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni3); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		//DOLCI E FRUTTA
+		buttonPrimary12.addClickListener(event -> c.aggiungiPiatto(dolciFrutta1.get(Piatti.PIATTI.NOME)));
+		buttonPrimary13.addClickListener(event -> c.aggiungiPiatto(dolciFrutta2.get(Piatti.PIATTI.NOME)));
+		buttonPrimary14.addClickListener(event -> c.aggiungiPiatto(dolciFrutta3.get(Piatti.PIATTI.NOME)));
+		buttonSecondary10.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta1); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary11.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta2); 
+			UI.getCurrent().navigate("my-view5");
+		});
+		buttonSecondary12.addClickListener(event -> {
+			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta3); 
+			UI.getCurrent().navigate("my-view5");
+		});
 		
 	}
 	

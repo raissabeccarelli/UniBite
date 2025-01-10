@@ -167,10 +167,11 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		StudenteDocente sd = new StudenteDocente();
 		buttonPrimary.addClickListener(event -> {
 			if (sd.login(matricola.getValue(), passwordField.getValue()) == true) {
-				VaadinSession.getCurrent().setAttribute("SDC", null);
+				
 		        VaadinSession.getCurrent().setAttribute("CARRELLO", null);
-		        VaadinSession.getCurrent().setAttribute("E", null);	
-				VaadinSession.getCurrent().setAttribute("SDC", sd);
+		        //VaadinSession.getCurrent().setAttribute("E", null);	
+		        StudenteDocente st = new StudenteDocente(matricola.getValue());
+				VaadinSession.getCurrent().setAttribute("SDC", st);
 				UI.getCurrent().navigate("my-view4");
 			}
 		});
