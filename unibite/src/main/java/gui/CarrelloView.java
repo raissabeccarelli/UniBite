@@ -22,11 +22,15 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.function.ValueProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import controller.Carrello;
+import controller.Esterno;
 import controller.Piatto;
+import controller.StudenteDocente;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +44,18 @@ public class CarrelloView extends Composite<VerticalLayout> {
 
 	public CarrelloView() {
 		
-		List<Map.Entry<String, String>> piatti = Carrello.getLista();
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");	
+		Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");		
+		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");	
+		
+		List<Map.Entry<String, String>> piatti = c.getLista();
 		Grid<Map.Entry<String, String>> grid = new Grid<>();
+		BigDecimal prezzoTot;
+		if(sd == null) {
+			prezzoTot = c.elaboraPrezzo();			
+		}else {
+			prezzoTot = c.elaboraPrezzo();			
+		}
 		
 		H1 h1 = new H1();
 		VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -122,7 +136,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow5.getStyle().set("flex-grow", "1");
 		layoutRow5.setAlignItems(Alignment.START);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.START);
-		h5.setText("totale");
+		h5.setText(prezzoTot.toString());
 		h5.setWidth("max-content");
 		textSmall.setText("Per eliminare un prodotto, selezionalo e clicca elimina");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
@@ -171,6 +185,11 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow4.add(buttonPrimary3);
 		
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view4"));
+		
+		
+		
+		
+		
 	}
 
 	

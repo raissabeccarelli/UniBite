@@ -763,6 +763,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		
 		//LOGICA AGGIUNGI PIATTO
 		//PRIMI
+		
 		buttonPrimary3.addClickListener(event -> {
 		if(checkbox.getValue()) {
 			    c.aggiungiPiattoConFormaggio(primi1.get(Piatti.PIATTI.NOME));

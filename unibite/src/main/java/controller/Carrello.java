@@ -1,14 +1,14 @@
 package controller;
 
+import java.math.BigDecimal;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 import org.jooq.DSLContext;
 import org.jooq.Record1;
-import org.jooq.Record2;
-import org.jooq.impl.DSL;
 
 import classidb.Piatti;
 import model.Connessione;
@@ -32,8 +32,17 @@ public class Carrello {
 		return piattiSelezionati;
 	}
 
-	public void elaboraPrezzo() {
-		
+	public BigDecimal elaboraPrezzo() {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		BigDecimal prezzoTot = BigDecimal.ZERO;
+		for (Map.Entry<String, String> entry : piattiSelezionati) {
+		    String nome = entry.getKey();
+		    List<Record1<BigDecimal>> result = dslContext.select(Piatti.PIATTI.PREZZOUNITARIO)
+			.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
+		prezzoTot = prezzoTot.add(result.get(0).value1());   
+		}
+		return prezzoTot;
 	}
 	
 	
