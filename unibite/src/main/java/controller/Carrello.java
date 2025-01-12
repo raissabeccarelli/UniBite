@@ -5,11 +5,16 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.jooq.DSLContext;
 import org.jooq.Record1;
+import org.jooq.Record2;
 
+import com.vaadin.flow.component.grid.Grid;
+
+import classidb.Accountutenti;
 import classidb.Piatti;
 import model.Connessione;
 
@@ -45,6 +50,30 @@ public class Carrello {
 		return prezzoTot;
 	}
 	
+	public BigDecimal elaboraPrezzoScontato(int mat) {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		BigDecimal prezzoTot = BigDecimal.ZERO;
+		for (Map.Entry<String, String> entry : piattiSelezionati) {
+		    String nome = entry.getKey();
+		    List<Record1<BigDecimal>> result = dslContext.select(Piatti.PIATTI.PREZZOUNITARIO)
+			.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
+		prezzoTot = prezzoTot.add(result.get(0).value1());   
+		}
+		List<Record1<Integer>> fascia = dslContext.select(Accountutenti.ACCOUNTUTENTI.FASCIAISEE)
+				.from(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(mat)).fetch();
+		if(fascia.get(0).value1() == 1) {
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.8))));
+		}else if(fascia.get(0).value1() == 2) {
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.6))));
+		}else if(fascia.get(0).value1() == 3) {
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.3))));
+		}else {
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.05))));
+		}	
+		return prezzoTot;
+	}
+	
 	
 	public static void aggiungiPiatto(String nome) {
 		Connessione connessione = Connessione.getInstance();
@@ -66,6 +95,14 @@ public class Carrello {
 		String piatto = result.get(0).value1();
 		String valore = "Aggiungi Formaggio";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
+	}
+	
+	public static void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
+		
+		Entry<String, String> primoRecord = selezione.iterator().next();
+		String nomePiatto = primoRecord.getKey();
+		System.out.println(nomePiatto);
+		piattiSelezionati.removeIf(entry -> entry.getKey().equals(nomePiatto));		
 	}
 	
 

@@ -27,10 +27,12 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import controller.Carrello;
 import controller.Esterno;
+import controller.Personale;
 import controller.Piatto;
 import controller.StudenteDocente;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +56,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		if(sd == null) {
 			prezzoTot = c.elaboraPrezzo();			
 		}else {
-			prezzoTot = c.elaboraPrezzo();			
+			prezzoTot = c.elaboraPrezzoScontato(sd.getMatricola());			
 		}
 		
 		H1 h1 = new H1();
@@ -136,7 +138,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow5.getStyle().set("flex-grow", "1");
 		layoutRow5.setAlignItems(Alignment.START);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.START);
-		h5.setText(prezzoTot.toString());
+		h5.setText(prezzoTot.setScale(2, RoundingMode.HALF_UP).toString().concat("€"));
 		h5.setWidth("max-content");
 		textSmall.setText("Per eliminare un prodotto, selezionalo e clicca elimina");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
@@ -186,7 +188,10 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view4"));
 		
-		
+		buttonPrimary.addClickListener(event -> {
+			c.eliminaPiatto(grid.getSelectedItems());
+			UI.getCurrent().refreshCurrentRoute(isAttached());
+		});
 		
 		
 		

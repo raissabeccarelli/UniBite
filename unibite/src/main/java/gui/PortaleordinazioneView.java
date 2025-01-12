@@ -743,8 +743,11 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate(""));
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view6"));
 		
+		
+		
 		//LOGICA AGGIUNGI CARRELLO		
-		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");		
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
+		
 		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");		
 		if (c == null) { 
 		    if (sd == null) {
@@ -760,6 +763,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		} else {
 		    System.out.println("Carrello già esistente nella sessione");
 		}
+		
 		
 		//LOGICA AGGIUNGI PIATTO
 		//PRIMI
