@@ -30,6 +30,9 @@ import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 
+
+
+
 import generated.tables.*;
 import controller.Carrello;
 import controller.Esterno;
@@ -740,9 +743,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		layoutColumn25.add(buttonSecondary12);
 		layoutColumn25.add(buttonPrimary14);
 		
-		//NAVIGAZIONE VIEW
-		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate(""));
-		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view6"));
+		
 		
 		
 		
@@ -854,6 +855,18 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta3); 
 			UI.getCurrent().navigate("my-view5");
 		});
+		
+		
+		//NAVIGAZIONE VIEW
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		int contatore = c.getLista().size();
+				buttonPrimary.addClickListener(event -> {for(int i=0; i<contatore; i++) {
+					dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.add(1))
+					.where(Piatti.PIATTI.NOME.eq(c.getLista().get(i).getKey())).execute();
+				}
+														UI.getCurrent().navigate("");});
+				buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view6"));
 		
 	}
 	

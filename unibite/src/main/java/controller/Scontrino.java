@@ -1,11 +1,11 @@
 package controller;
 
 public class Scontrino {
-	public int numeroSeriale;
+	private static int contatore = 0; 
+    private int numeroSeriale; 
 
-	public Scontrino(int numeroSeriale) {
-		super();
-		this.numeroSeriale = numeroSeriale;
+	public Scontrino() {
+		this.numeroSeriale = ++contatore;
 	}
 
 	public int getNumeroSeriale() {

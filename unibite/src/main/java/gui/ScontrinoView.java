@@ -2,6 +2,7 @@ package gui;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.HasSize;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.H6;
@@ -16,11 +17,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import controller.Scontrino;
+
 @PageTitle("Scontrino")
 @Route("my-view8")
 public class ScontrinoView extends Composite<VerticalLayout> {
 
 	public ScontrinoView() {
+		Scontrino sc = new Scontrino();
 		HorizontalLayout layoutRow2 = new HorizontalLayout();
 		H1 h1 = new H1();
 		H6 h6 = new H6();
@@ -59,7 +63,7 @@ public class ScontrinoView extends Composite<VerticalLayout> {
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("0px");
 		layoutRow3.getStyle().set("flex-grow", "1");
-		h42.setText("scontrino");
+		h42.setText(""+sc.getNumeroSeriale());
 		h42.setWidth("max-content");
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
@@ -74,8 +78,12 @@ public class ScontrinoView extends Composite<VerticalLayout> {
 		layoutRow.add(h4);
 		layoutRow.add(h42);
 		getContent().add(layoutColumn2);
-
 		layoutColumn2.add(image);
+		
+		
+		  UI.getCurrent().getPage().executeJs(
+		            "setTimeout(() => window.location.href='', 5000);"
+		        );
 
 	}
 }

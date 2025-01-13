@@ -132,7 +132,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		layoutColumn3.setAlignItems(Alignment.CENTER);
 		numberField.setLabel("Inserisci porzioni");
 		numberField.setWidth("179px");
-		buttonPrimary3.setText("Aggiungi il numero di porzioni");
+		buttonPrimary3.setText("Imposta il numero di porzioni");
 		buttonPrimary3.setWidth("min-content");
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutColumn4.setWidthFull();
@@ -162,10 +162,15 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		layoutColumn3.add(buttonPrimary4);
 
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view10"));
-
+		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate(""));
+		Personale p = new Personale();
 		buttonPrimary3.addClickListener(event -> {
-			Personale p = new Personale();
 			p.aggiungiPorzioni(grid.getSelectedItems(), numberField.getValue());
+			UI.getCurrent().refreshCurrentRoute(isAttached());
+		});
+		buttonPrimary4.addClickListener(event -> {
+			
+			p.eliminaPiatto(grid.getSelectedItems());
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
 	}

@@ -1,7 +1,11 @@
 package controller;
 
-import org.jooq.DSLContext;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
+import org.jooq.DSLContext;
+import org.jooq.Record1;
 
 import generated.tables.*;
 import model.Connessione;
@@ -41,8 +45,12 @@ public class StudenteDocente extends Utente {
 		this.matricola=matricola;
 	}
 
-	public float getContoVirtuale() {
-		return contoVirtuale;
+	public float getContoVirtuale(int matricola) {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		List<Record1<BigDecimal>> result = dslContext.select(Accountutenti.ACCOUNTUTENTI.CONTO)
+				.from(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(matricola)).fetch();
+		return result.get(0).value1().setScale(2, RoundingMode.HALF_UP).floatValue();
 	}
 
 	public void setContoVirtuale(float contoVirtuale) {

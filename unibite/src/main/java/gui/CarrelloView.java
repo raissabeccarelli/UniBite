@@ -193,6 +193,17 @@ public class CarrelloView extends Composite<VerticalLayout> {
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
 		
+		buttonPrimary3.addClickListener(event -> { 
+			if(c.getLista().size()!=0) {
+				if(sd==null) {
+				UI.getCurrent().navigate("my-view8");
+				}else {
+					UI.getCurrent().navigate("my-view7");
+				}	
+		}
+			
+			});
+		
 		
 		
 	}

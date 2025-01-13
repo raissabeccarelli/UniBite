@@ -18,7 +18,6 @@ import generated.tables.*;
 import model.Connessione;
 
 public class Carrello {
-	//public static List<Record2<String, String>> piattiSelezionati;
 	
 	public static List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
 	private int matricola;
@@ -84,6 +83,8 @@ public class Carrello {
 		String valore = " ";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
 		
+		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
+		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 	}
 	
 	public static void aggiungiPiattoConFormaggio(String nome) {
@@ -94,15 +95,26 @@ public class Carrello {
 		String piatto = result.get(0).value1();
 		String valore = "Aggiungi Formaggio";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
+		
+		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
+		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 	}
 	
 	public static void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
-		
+		int conta=0;
 		Entry<String, String> primoRecord = selezione.iterator().next();
 		String nomePiatto = primoRecord.getKey();
 		System.out.println(nomePiatto);
-		piattiSelezionati.removeIf(entry -> entry.getKey().equals(nomePiatto));		
+		conta=piattiSelezionati.size();
+		piattiSelezionati.removeIf(entry -> entry.getKey().equals(nomePiatto));	
+		conta = conta - piattiSelezionati.size();
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.add(conta))
+		.where(Piatti.PIATTI.NOME.eq(nomePiatto)).execute();
 	}
+	
+	
 	
 
 

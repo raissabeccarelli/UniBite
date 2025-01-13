@@ -42,8 +42,11 @@ public class Personale {
 		piatto.setNumeroPorzioni(nomePiatto, quantita);
 	}
 
-	public void eliminaPiatto() {
-
+	public void eliminaPiatto(Set<Record2<String, Integer>> dato) {
+		Record2<String, Integer> primoRecord = dato.iterator().next();
+		String nomePiatto = primoRecord.value1();
+		Piatto piatto = new Piatto();
+		piatto.setNumeroPorzioni(nomePiatto, 0);
 	}
 
 	public boolean login(String username, String pwd) {

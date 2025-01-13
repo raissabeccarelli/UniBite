@@ -1,5 +1,7 @@
 package gui;
 
+import org.jooq.DSLContext;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -16,13 +18,22 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import controller.Carrello;
+import controller.StudenteDocente;
+import generated.tables.Accountutenti;
+import generated.tables.Piatti;
+import model.Connessione;
 
 @PageTitle("Pagamento")
 @Route("my-view7")
 public class PagamentoView extends Composite<VerticalLayout> {
 
 	public PagamentoView() {
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");	
+		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");	
 		H1 h1 = new H1();
 		Hr hr = new Hr();
 		Paragraph textSmall = new Paragraph();
@@ -31,7 +42,7 @@ public class PagamentoView extends Composite<VerticalLayout> {
 		HorizontalLayout layoutRow2 = new HorizontalLayout();
 		HorizontalLayout layoutRow4 = new HorizontalLayout();
 		H4 h4 = new H4();
-		H6 h6 = new H6();
+		H4 h6 = new H4();
 		HorizontalLayout layoutRow3 = new HorizontalLayout();
 		Button buttonPrimary = new Button();
 		HorizontalLayout layoutRow5 = new HorizontalLayout();
@@ -69,7 +80,7 @@ public class PagamentoView extends Composite<VerticalLayout> {
 		h4.setText("Credito virtuale:");
 		layoutRow2.setAlignSelf(FlexComponent.Alignment.CENTER, h4);
 		h4.setWidth("max-content");
-		h6.setText("CONTO");
+		h6.setText(sd.getContoVirtuale(sd.getMatricola())+"€");
 		layoutRow2.setAlignSelf(FlexComponent.Alignment.CENTER, h6);
 		h6.setWidth("max-content");
 		layoutRow3.setWidthFull();
@@ -105,7 +116,16 @@ public class PagamentoView extends Composite<VerticalLayout> {
 		layoutColumn2.add(layoutRow3);
 		layoutRow3.add(buttonPrimary);
 		layoutRow3.add(buttonPrimary2);
+		
+		
+		//vai in cassa
 		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate("my-view8"));
-		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view8"));
+		//pagamento virtuale
+		buttonPrimary2.addClickListener(event -> {
+			Connessione connessione = Connessione.getInstance();
+			DSLContext dslContext = connessione.getDslContext();
+			dslContext.update(Accountutenti.ACCOUNTUTENTI).set(Accountutenti.ACCOUNTUTENTI.CONTO,Accountutenti.ACCOUNTUTENTI.CONTO.add(c.elaboraPrezzoScontato(sd.getMatricola())))
+			.where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(sd.getMatricola())).execute();
+			UI.getCurrent().navigate("my-view8");});
 	}
 }
