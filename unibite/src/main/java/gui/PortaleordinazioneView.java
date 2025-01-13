@@ -42,7 +42,7 @@ import model.Connessione;
 @PageTitle("Portale ordinazione")
 @Route("my-view4")
 public class PortaleordinazioneView extends Composite<VerticalLayout> {
-	
+	private Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");	
 	public PortaleordinazioneView() {
 		
 		//lista dei primi piatti
@@ -750,7 +750,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		//LOGICA AGGIUNGI CARRELLO		
 		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
 		
-		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");		
+		//Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");		
 		if (c == null) { 
 		    if (sd == null) {
 		        Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");

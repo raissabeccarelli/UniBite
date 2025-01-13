@@ -19,7 +19,7 @@ import model.Connessione;
 
 public class Carrello {
 	
-	public static List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
+	public List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
 	private int matricola;
 	
 	public Carrello(int matricola) {
@@ -31,7 +31,7 @@ public class Carrello {
 		return matricola;
 	}
 	
-	public static List<Map.Entry<String, String>> getLista() {	
+	public List<Map.Entry<String, String>> getLista() {	
 		return piattiSelezionati;
 	}
 
@@ -73,7 +73,7 @@ public class Carrello {
 	}
 	
 	
-	public static void aggiungiPiatto(String nome) {
+	public  void aggiungiPiatto(String nome) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		List<Record1<String>> result = dslContext.select(Piatti.PIATTI.NOME)
@@ -87,7 +87,7 @@ public class Carrello {
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 	}
 	
-	public static void aggiungiPiattoConFormaggio(String nome) {
+	public  void aggiungiPiattoConFormaggio(String nome) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		List<Record1<String>> result = dslContext.select(Piatti.PIATTI.NOME)
@@ -100,7 +100,7 @@ public class Carrello {
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 	}
 	
-	public static void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
+	public  void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
 		int conta=0;
 		Entry<String, String> primoRecord = selezione.iterator().next();
 		String nomePiatto = primoRecord.getKey();
