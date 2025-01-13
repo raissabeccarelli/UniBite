@@ -3,7 +3,7 @@ package controller;
 import org.jooq.DSLContext;
 
 
-import classidb.*;
+import generated.tables.*;
 import model.Connessione;
 
 public class StudenteDocente extends Utente {

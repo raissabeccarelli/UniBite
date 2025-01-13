@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import org.jooq.DSLContext;
 import org.jooq.Record2;
-import classidb.*;
+import generated.tables.*;
 import model.Connessione;
 
 public class Piatto {

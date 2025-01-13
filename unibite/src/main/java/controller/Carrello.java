@@ -14,8 +14,7 @@ import org.jooq.Record2;
 
 import com.vaadin.flow.component.grid.Grid;
 
-import classidb.Accountutenti;
-import classidb.Piatti;
+import generated.tables.*;
 import model.Connessione;
 
 public class Carrello {

@@ -5,7 +5,7 @@ import java.util.Set;
 import org.jooq.DSLContext;
 import org.jooq.Record2;
 
-import classidb.*;
+import generated.tables.*;
 import model.Connessione;
 
 public class Personale {

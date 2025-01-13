@@ -29,7 +29,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
-import classidb.*;
+
+import generated.tables.*;
 import controller.Carrello;
 import controller.Esterno;
 import controller.StudenteDocente;

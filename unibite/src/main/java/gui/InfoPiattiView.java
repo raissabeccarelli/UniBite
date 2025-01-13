@@ -25,8 +25,9 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
-import classidb.Piatti;
-import controller.StudenteDocente;
+import generated.tables.*;
+//import generated.tables.Piatti;
+
 import model.Connessione;
 
 @PageTitle("InfoPiatti")

@@ -11,7 +11,7 @@ import org.jooq.Record1;
 import org.jooq.Result;
 import org.jooq.impl.DSL;
 
-import classidb.*;
+import generated.*;
 import controller.Piatto;
 
 public class Connessione {

@@ -183,7 +183,7 @@
                                 <inputSchema></inputSchema> <!-- SQLite non usa schemi -->
                             </database>
                             <target>
-                                <packageName>com.example.jooq.generated</packageName>
+                                <packageName>generated</packageName>
                                 <directory>src/main/java</directory>
                             </target>
                         </generator>
