@@ -113,6 +113,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow5.setAlignItems(Alignment.CENTER);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.CENTER);
 		buttonPrimary.setText("ACCEDI");
+		buttonPrimary.addClickShortcut(com.vaadin.flow.component.Key.ENTER);
 		layoutRow5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
 		buttonPrimary.setWidth("192px");
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);

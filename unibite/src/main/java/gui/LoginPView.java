@@ -67,6 +67,7 @@ public class LoginPView extends Composite<VerticalLayout> {
 		layoutColumn5.setWidth("100%");
 		layoutColumn5.getStyle().set("flex-grow", "0.02");
 		buttonPrimary.setText("ACCEDI");
+		buttonPrimary.addClickShortcut(com.vaadin.flow.component.Key.ENTER);
 		layoutColumn5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
 		buttonPrimary.setWidth("192px");
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
