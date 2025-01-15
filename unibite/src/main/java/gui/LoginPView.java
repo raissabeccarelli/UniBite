@@ -7,6 +7,9 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
@@ -100,6 +103,12 @@ public class LoginPView extends Composite<VerticalLayout> {
 		buttonPrimary.addClickListener(event -> {
 			if (p.login(textField.getValue(), passwordField.getValue()) == true) {
 				UI.getCurrent().navigate("my-view9");
+			}else {
+				Notification notification = new Notification(
+	                    "Credenziali errate. Riprova.", 3000);
+	                notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+	                notification.setPosition(Position.TOP_CENTER);
+	                notification.open();
 			}
 		});
 	}

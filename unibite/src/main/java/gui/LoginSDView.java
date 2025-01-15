@@ -8,6 +8,9 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -174,6 +177,12 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		        StudenteDocente st = new StudenteDocente(matricola.getValue());
 				VaadinSession.getCurrent().setAttribute("SDC", st);
 				UI.getCurrent().navigate("my-view4");
+			}else {
+				 Notification notification = new Notification(
+		                    "Credenziali errate. Riprova.", 3000);
+		                notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+		                notification.setPosition(Position.TOP_CENTER);
+		                notification.open();
 			}
 		});
 		// aggiungere pwd errata
