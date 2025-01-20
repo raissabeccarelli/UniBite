@@ -38,14 +38,25 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import generated.tables.*;
 import controller.Carrello;
+import controller.CarrelloObserver;
 import controller.Esterno;
+
 import controller.StudenteDocente;
 import model.Connessione;
 
 @PageTitle("Portale ordinazione")
 @Route("my-view4")
-public class PortaleordinazioneView extends Composite<VerticalLayout> {
+public class PortaleordinazioneView extends Composite<VerticalLayout> implements CarrelloObserver{
 	private Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");	
+	
+	@Override
+    public void onPiattoAggiunto(String nomePiatto) {
+		
+        String messaggio = "È stato aggiunto il piatto: " + nomePiatto;
+      Notification.show(messaggio);
+    
+	}
+	
 	public PortaleordinazioneView() {
 		
 		//lista dei primi piatti
@@ -769,6 +780,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		    System.out.println("Carrello già esistente nella sessione");
 		}
 		
+		c.addObserver(this);
 		
 		//LOGICA AGGIUNGI PIATTO
 		//PRIMI
@@ -779,11 +791,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		}else {
 			c.aggiungiPiatto(primi1.get(Piatti.PIATTI.NOME));
 		}	
-		Notification notification = new Notification(
-                primi1.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+		
 		});
 		
 		buttonPrimary4.addClickListener(event -> {
@@ -792,11 +800,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 			}else {
 				c.aggiungiPiatto(primi2.get(Piatti.PIATTI.NOME));
 			}
-			Notification notification = new Notification(
-	                primi2.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-	            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-	            notification.setPosition(Position.TOP_CENTER);
-	            notification.open();
+			
 			});
 		
 		buttonPrimary5.addClickListener(event -> {
@@ -805,11 +809,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 			}else {
 				c.aggiungiPiatto(primi3.get(Piatti.PIATTI.NOME));
 			}	
-			Notification notification = new Notification(
-	                primi3.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-	            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-	            notification.setPosition(Position.TOP_CENTER);
-	            notification.open();
+			
 			});
 		
 		buttonSecondary.addClickListener(event -> {
@@ -828,27 +828,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		//SECONDI
 		buttonPrimary6.addClickListener(event -> {
 			c.aggiungiPiatto(secondi1.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            secondi1.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary7.addClickListener(event -> {
 			c.aggiungiPiatto(secondi2.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            secondi2.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary8.addClickListener(event ->{
 			c.aggiungiPiatto(secondi3.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            secondi3.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonSecondary4.addClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi1); 
@@ -865,27 +853,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		//CONTORNI
 		buttonPrimary9.addClickListener(event -> {
 			c.aggiungiPiatto(contorni1.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            contorni1.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary10.addClickListener(event -> {
 			c.aggiungiPiatto(contorni2.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            contorni2.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary11.addClickListener(event -> {
 			c.aggiungiPiatto(contorni3.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            contorni3.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonSecondary7.addClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni1); 
@@ -902,27 +878,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> {
 		//DOLCI E FRUTTA
 		buttonPrimary12.addClickListener(event -> {
 			c.aggiungiPiatto(dolciFrutta1.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            dolciFrutta1.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary13.addClickListener(event -> {
 			c.aggiungiPiatto(dolciFrutta2.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            dolciFrutta2.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonPrimary14.addClickListener(event -> {
 			c.aggiungiPiatto(dolciFrutta3.get(Piatti.PIATTI.NOME));
-			Notification notification = new Notification(
-            dolciFrutta3.get(Piatti.PIATTI.NOME)+ " aggiunto al carrello", 1000);
-            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-            notification.setPosition(Position.TOP_CENTER);
-            notification.open();
+			
          });
 		buttonSecondary10.addClickListener(event -> {
 			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta1); 

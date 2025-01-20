@@ -85,6 +85,8 @@ public class Carrello {
 		
 		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
+		
+		notifyObservers(nome);
 	}
 	
 	public  void aggiungiPiattoConFormaggio(String nome) {
@@ -98,6 +100,8 @@ public class Carrello {
 		
 		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
+		
+		notifyObservers(nome);
 	}
 	
 	public  void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
@@ -115,7 +119,20 @@ public class Carrello {
 	}
 	
 	
-	
+	private final List<CarrelloObserver> observers = new ArrayList<>();
+		public void addObserver(CarrelloObserver observer) {
+	        observers.add(observer);
+	        System.out.println(observers);
+	    }
 
+	    public void removeObserver(CarrelloObserver observer) {
+	        observers.remove(observer);
+	    }
+
+	    public void notifyObservers(String nomePiatto) {
+	        CarrelloObserver observer = observers.get(observers.size()-1);
+	            observer.onPiattoAggiunto(nomePiatto);
+	
+	    }
 
 }

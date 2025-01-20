@@ -11,6 +11,9 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.listbox.MultiSelectListBox;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -22,9 +25,11 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import controller.CarrelloObserver;
 import controller.Personale;
 import controller.Piatto;
 import controller.StudenteDocente;
+import generated.tables.Piatti;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +39,7 @@ import org.jooq.Record2;
 @PageTitle("Portale personale")
 @Route("my-view9")
 public class PortalepersonaleView extends Composite<VerticalLayout> {
-
+	
 	public PortalepersonaleView() {
 		HorizontalLayout layoutRow = new HorizontalLayout();
 		Image image = new Image("images/logo.png", "logo");
@@ -52,6 +57,10 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 
 		List<Record2<String, Integer>> piatti = Piatto.cercaPiatti();
 		Grid<Record2<String, Integer>> grid = new Grid<>();
+		
+	
+        
+        
 
 		HorizontalLayout layoutRow5 = new HorizontalLayout();
 		VerticalLayout layoutColumn3 = new VerticalLayout();
@@ -173,6 +182,7 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 			p.eliminaPiatto(grid.getSelectedItems());
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
+		
 	}
 
 }
