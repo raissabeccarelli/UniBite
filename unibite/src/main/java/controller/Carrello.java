@@ -17,7 +17,7 @@ import generated.tables.*;
 import model.Connessione;
 
 public class Carrello {
-	private static final Logger logger = LogManager.getLogger(Carrello.class);
+	private static final Logger LOGGER = LogManager.getLogger(Carrello.class);
 	public static List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
 	private int matricola;
 	
@@ -60,14 +60,13 @@ public class Carrello {
 		List<Record1<Integer>> fascia = dslContext.select(Accountutenti.ACCOUNTUTENTI.FASCIAISEE)
 				.from(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(mat)).fetch();
 		if(fascia.get(0).value1() == 1) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.8))));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.8)));
 		}else if(fascia.get(0).value1() == 2) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.6))));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.6)));
 		}else if(fascia.get(0).value1() == 3) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.3))));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.3)));
 		}else {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply((BigDecimal.valueOf(0.05))));
-		}	
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.05)));}	
 		return prezzoTot;
 	}
 	
@@ -78,7 +77,7 @@ public class Carrello {
 		List<Record1<String>> result = dslContext.select(Piatti.PIATTI.NOME)
 		.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
 		String piatto = result.get(0).value1();
-		logger.info(piatto);
+		LOGGER.info(piatto);
 		String valore = " ";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
 		
@@ -107,7 +106,7 @@ public class Carrello {
 		int conta=0;
 		Entry<String, String> primoRecord = selezione.iterator().next();
 		String nomePiatto = primoRecord.getKey();
-		logger.info(nomePiatto);
+		LOGGER.info(nomePiatto);
 		conta=piattiSelezionati.size();
 		piattiSelezionati.removeIf(entry -> entry.getKey().equals(nomePiatto));	
 		conta = conta - piattiSelezionati.size();
