@@ -54,7 +54,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		Hr hr = new Hr();
 		HorizontalLayout layoutRow = new HorizontalLayout();
 		HorizontalLayout layoutRow2 = new HorizontalLayout();
-		MultiSelectListBox textItems = new MultiSelectListBox();
+		MultiSelectListBox<String> textItems = new MultiSelectListBox<>();
 		HorizontalLayout layoutRow3 = new HorizontalLayout();
 		H4 h4 = new H4();
 		HorizontalLayout layoutRow5 = new HorizontalLayout();
@@ -72,25 +72,27 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		getContent().setHeight("550px");
 		h1.setText("CARRELLO");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
-		h1.setWidth("max-content");
+		String width = "max-content";
+		h1.setWidth(width);
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
-		layoutColumn2.getStyle().set("flex-grow", "1");
+		String style ="flex-grow";
+		layoutColumn2.getStyle().set(style, "1");
 		layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
 		layoutColumn2.setAlignItems(Alignment.START);
 		layoutRow.setWidthFull();
 		layoutColumn2.setFlexGrow(1.0, layoutRow);
 		layoutRow.addClassName(Gap.MEDIUM);
 		layoutRow.setWidth("100%");
-		layoutRow.getStyle().set("flex-grow", "1");
+		layoutRow.getStyle().set(style, "1");
 		layoutRow.setAlignItems(Alignment.CENTER);
 		layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
 		layoutRow2.setHeightFull();
 		layoutRow.setFlexGrow(1.0, layoutRow2);
 		layoutRow2.addClassName(Gap.MEDIUM);
 		layoutRow2.setWidth("75%");
-		layoutRow2.getStyle().set("flex-grow", "1");
+		layoutRow2.getStyle().set(style, "1");
 		layoutRow2.setAlignItems(Alignment.CENTER);
 		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
 		textItems.setWidth("500px");
@@ -98,14 +100,14 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		
 		
 		grid.setWidth("600px");
-		grid.getStyle().set("flex-grow", "0");
+		grid.getStyle().set(style, "0");
 		// Imposta la larghezza delle colonne singolarmente
-		grid.addColumn(entry -> entry.getKey())  // Colonna per il nome del piatto
+		grid.addColumn(Map.Entry::getKey)  // Colonna per il nome del piatto
 		    .setHeader("Nome Piatto")
 		    .setKey("nome");
 		    
 
-		grid.addColumn(entry -> entry.getValue())  // Colonna per la descrizione
+		grid.addColumn(Map.Entry::getValue)  // Colonna per la descrizione
 		    .setHeader("Note")
 		    .setKey("note");
 		   
@@ -116,49 +118,50 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutColumn2.setFlexGrow(1.0, layoutRow3);
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("100%");
-		layoutRow3.getStyle().set("flex-grow", "1");
+		layoutRow3.getStyle().set(style, "1");
 		layoutRow3.setAlignItems(Alignment.CENTER);
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
 		h4.setText("TOTALE:");
-		h4.setWidth("max-content");
+		h4.setWidth(width);
 		layoutRow5.setHeightFull();
 		layoutRow3.setFlexGrow(1.0, layoutRow5);
 		layoutRow5.addClassName(Gap.MEDIUM);
 		layoutRow5.setWidth("0px");
-		layoutRow5.getStyle().set("flex-grow", "1");
+		layoutRow5.getStyle().set(style, "1");
 		layoutRow5.setAlignItems(Alignment.START);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.START);
 		h5.setText(prezzoTot.setScale(2, RoundingMode.HALF_UP).toString().concat("€"));
-		h5.setWidth("max-content");
+		h5.setWidth(width);
 		textSmall.setText("Per eliminare un prodotto, selezionalo e clicca elimina");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
-		textSmall.setWidth("max-content");
+		textSmall.setWidth(width);
 		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
 		buttonPrimary.setText("Elimina piatto ❌");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
-		buttonPrimary.setWidth("min-content");
+		String setMin = "min-content";
+		buttonPrimary.setWidth(setMin);
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutRow4.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutRow4);
 		layoutRow4.addClassName(Gap.MEDIUM);
 		layoutRow4.setWidth("100%");
-		layoutRow4.getStyle().set("flex-grow", "1");
+		layoutRow4.getStyle().set(style, "1");
 		layoutRow4.setAlignItems(Alignment.CENTER);
 		layoutRow4.setJustifyContentMode(JustifyContentMode.CENTER);
 		buttonPrimary2.setText("CONTINUA AD ORDINARE");
 		layoutRow4.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary2);
-		buttonPrimary2.setWidth("min-content");
+		buttonPrimary2.setWidth(setMin);
 		buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutRow6.setHeightFull();
 		layoutRow4.setFlexGrow(1.0, layoutRow6);
 		layoutRow6.addClassName(Gap.MEDIUM);
 		layoutRow6.setWidth("500px");
-		layoutRow6.getStyle().set("flex-grow", "1");
+		layoutRow6.getStyle().set(style, "1");
 		layoutRow6.setAlignItems(Alignment.CENTER);
 		layoutRow6.setJustifyContentMode(JustifyContentMode.CENTER);
 		buttonPrimary3.setText("VAI AL PAGAMENTO");
 		layoutRow4.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary3);
-		buttonPrimary3.setWidth("min-content");
+		buttonPrimary3.setWidth(setMin);
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		getContent().add(h1);
 		getContent().add(layoutColumn2);
@@ -184,7 +187,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		});
 		
 		buttonPrimary3.addClickListener(event -> { 
-			if(c.getLista().size()!=0) {
+			if(!c.getLista().isEmpty()) {
 				if(sd==null) {
 				UI.getCurrent().navigate("my-view8");
 				}else {

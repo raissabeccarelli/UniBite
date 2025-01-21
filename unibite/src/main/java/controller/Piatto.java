@@ -20,7 +20,7 @@ public class Piatto {
 	public Piatto(String nome, String descrizione, String ingredienti, String allergeni, TipoPortata tipo,
 			float prezzoUnitario, String immagine, int numeroPorzioni) {
 		this.nome = nome;
-		this.descrizione = descrizione;
+		descrizione = descrizione;
 		this.ingredienti = ingredienti;
 		this.allergeni = allergeni;
 		this.tipo = tipo;
@@ -33,8 +33,7 @@ public class Piatto {
 				.columns(Piatti.PIATTI.NOME, Piatti.PIATTI.DESCRIZIONE, Piatti.PIATTI.INGREDIENTI,
 						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO,
 						Piatti.PIATTI.IMMAGINE)
-				.values(nome, descrizione, ingredienti, allergeni, tipo.getValue(),
-						BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine)
+				.values(nome, descrizione, ingredienti, allergeni, tipo.getValue(),	BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine)
 				.execute();
 	}
 
@@ -109,10 +108,9 @@ public class Piatto {
 	public static List<Record2<String, Integer>> cercaPiatti() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
-		List<Record2<String, Integer>> result = dslContext.select(Piatti.PIATTI.NOME, Piatti.PIATTI.NUMEROPORZIONI)
+		//lista di piatti
+		return  dslContext.select(Piatti.PIATTI.NOME, Piatti.PIATTI.NUMEROPORZIONI)
 				.from(Piatti.PIATTI).fetch();
-
-		return result;
 	}
 
 }

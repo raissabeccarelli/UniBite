@@ -15,18 +15,14 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
-import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import controller.StudenteDocente;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 @PageTitle("Registrazione")
@@ -49,7 +45,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		PasswordField passwordField = new PasswordField();
 		VerticalLayout layoutColumn3 = new VerticalLayout();
 		HorizontalLayout layoutRow3 = new HorizontalLayout();
-		ComboBox<Integer> comboBox = new ComboBox();
+		ComboBox<Integer> comboBox = new ComboBox<>();
 		HorizontalLayout layoutRow6 = new HorizontalLayout();
 		EmailField emailField = new EmailField();
 		VerticalLayout layoutColumn4 = new VerticalLayout();
@@ -57,7 +53,8 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		Button buttonPrimary3 = new Button();
 
 		getContent().setWidth("100%");
-		getContent().getStyle().set("flex-grow", "1");
+		String style = "flex-grow";
+		getContent().getStyle().set(style, "1");
 		h1.setText("REGISTRAZIONE");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
 		h1.setWidth("max-content");
@@ -67,7 +64,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
-		layoutColumn2.getStyle().set("flex-grow", "1");
+		layoutColumn2.getStyle().set(style, "1");
 
 		layoutRow.setWidthFull();
 		layoutRow.getStyle().set("gap", "75px"); // Riduci lo spazio tra i campi
@@ -75,11 +72,12 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		layoutRow.setJustifyContentMode(JustifyContentMode.CENTER); // Avvicina i campi
 
 		textField.setLabel("NOME");
-		textField.setWidth("200px");
+		String dimensione = "200px";
+		textField.setWidth(dimensione);
 		layoutRow4.setWidth("auto"); // Riduci larghezza intermedia
-		layoutRow4.getStyle().remove("flex-grow"); // Rimuovi crescita dinamica
+		layoutRow4.getStyle().remove(style); // Rimuovi crescita dinamica
 		textField2.setLabel("COGNOME");
-		textField2.setWidth("200px");
+		textField2.setWidth(dimensione);
 
 		layoutRow2.setWidthFull();
 		layoutRow2.getStyle().set("gap", "75px"); // Riduci lo spazio tra i campi
@@ -87,16 +85,16 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER); // Avvicina i campi
 
 		matricola.setLabel("MATRICOLA");
-		matricola.setWidth("200px");
+		matricola.setWidth(dimensione);
 		layoutRow5.setWidth("auto"); // Riduci larghezza intermedia
-		layoutRow5.getStyle().remove("flex-grow"); // Rimuovi crescita dinamica
+		layoutRow5.getStyle().remove(style); // Rimuovi crescita dinamica
 		passwordField.setLabel("PASSWORD");
-		passwordField.setWidth("200px");
+		passwordField.setWidth(dimensione);
 
 		layoutColumn3.setWidthFull();
 		layoutColumn2.setFlexGrow(1.0, layoutColumn3);
 		layoutColumn3.setWidth("100%");
-		layoutColumn3.getStyle().set("flex-grow", "1");
+		layoutColumn3.getStyle().set(style, "1");
 
 		layoutRow3.setWidthFull();
 		layoutRow3.getStyle().set("gap", "75px"); // Riduci lo spazio tra i campi
@@ -104,23 +102,23 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER); // Avvicina i campi
 
 		comboBox.setLabel("FASCIA ISEE");
-		comboBox.setWidth("200px");
+		comboBox.setWidth(dimensione);
 		setComboBoxSampleData(comboBox);
 		layoutRow6.setWidth("auto"); // Riduci larghezza intermedia
-		layoutRow6.getStyle().remove("flex-grow"); // Rimuovi crescita dinamica
+		layoutRow6.getStyle().remove(style); // Rimuovi crescita dinamica
 		emailField.setLabel("EMAIL UNIVERSITARIA");
-		emailField.setWidth("200px");
+		emailField.setWidth(dimensione);
 
 		buttonPrimary3.setText("TORNA INDIETRO");
 		layoutColumn4.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
 		buttonPrimary3.setWidth("198px");
-		buttonPrimary3.getStyle().set("flex-grow", "1");
+		buttonPrimary3.getStyle().set(style, "1");
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
 		layoutColumn4.setWidthFull();
 		layoutColumn3.setFlexGrow(1.0, layoutColumn4);
 		layoutColumn4.setWidth("100%");
-		layoutColumn4.getStyle().set("flex-grow", "1");
+		layoutColumn4.getStyle().set(style, "1");
 		layoutColumn4.setJustifyContentMode(JustifyContentMode.CENTER);
 		layoutColumn4.setAlignItems(Alignment.CENTER);
 		buttonPrimary.setText("REGISTRATI");
@@ -169,7 +167,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		comboBox.setItems(options.keySet());
 
 		// Genera l'etichetta per ogni valore numerico
-		comboBox.setItemLabelGenerator(value -> options.get(value));
+		comboBox.setItemLabelGenerator(options::get);
 	}
 
 }

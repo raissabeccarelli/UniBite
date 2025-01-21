@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.jooq.DSLContext;
 import org.jooq.Record1;
@@ -15,13 +17,13 @@ import generated.tables.*;
 import model.Connessione;
 
 public class Carrello {
-	
-	public List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
+	private static final Logger logger = LogManager.getLogger(Carrello.class);
+	public static List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
 	private int matricola;
 	
 	public Carrello(int matricola) {
 		this.matricola=matricola;
-		this.piattiSelezionati = new ArrayList<Map.Entry<String, String>>();
+		piattiSelezionati = new ArrayList<>();
 	}
 	
 	public int getMatricola() {
@@ -76,7 +78,7 @@ public class Carrello {
 		List<Record1<String>> result = dslContext.select(Piatti.PIATTI.NOME)
 		.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
 		String piatto = result.get(0).value1();
-		System.out.println(piatto);
+		logger.info(piatto);
 		String valore = " ";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
 		
@@ -105,7 +107,7 @@ public class Carrello {
 		int conta=0;
 		Entry<String, String> primoRecord = selezione.iterator().next();
 		String nomePiatto = primoRecord.getKey();
-		System.out.println(nomePiatto);
+		logger.info(nomePiatto);
 		conta=piattiSelezionati.size();
 		piattiSelezionati.removeIf(entry -> entry.getKey().equals(nomePiatto));	
 		conta = conta - piattiSelezionati.size();
@@ -119,7 +121,7 @@ public class Carrello {
 	private final List<CarrelloObserver> observers = new ArrayList<>();
 		public void addObserver(CarrelloObserver observer) {
 	        observers.add(observer);
-	        System.out.println(observers);
+	        logger.info(observers);
 	    }
 
 	    public void removeObserver(CarrelloObserver observer) {

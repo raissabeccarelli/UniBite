@@ -52,12 +52,8 @@ public class Personale {
 	public boolean login(String username, String pwd) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
-		boolean exists = dslContext.fetchExists(dslContext.selectFrom(Accountpersonale.ACCOUNTPERSONALE)
+		return dslContext.fetchExists(dslContext.selectFrom(Accountpersonale.ACCOUNTPERSONALE)
 				.where(Accountpersonale.ACCOUNTPERSONALE.USERNAME.eq(username)
 						.and(Accountpersonale.ACCOUNTPERSONALE.PASSWORDP.eq(pwd))));
-		if (exists) {
-			return true;
-		}
-		return false;
 	}
 }

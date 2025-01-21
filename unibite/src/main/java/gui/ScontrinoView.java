@@ -1,13 +1,11 @@
 package gui;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -45,10 +43,11 @@ public class ScontrinoView extends Composite<VerticalLayout> {
 		layoutRow2.setHeight("150px");
 		h1.setText("GRAZIE E BUON PRANZO!");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
-		h1.setWidth("max-content");
+		String width = "max-content";
+		h1.setWidth(width);
 		h6.setText("VAI IN CASSA CON IL TUO SCONTRINO");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h6);
-		h6.setWidth("max-content");
+		h6.setWidth(width);
 		layoutRow.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutRow);
 		layoutRow.addClassName(Gap.MEDIUM);
@@ -57,14 +56,14 @@ public class ScontrinoView extends Composite<VerticalLayout> {
 		layoutRow.setAlignItems(Alignment.START);
 		layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
 		h4.setText("N°:");
-		h4.setWidth("max-content");
+		h4.setWidth(width);
 		layoutRow3.setHeightFull();
 		layoutRow.setFlexGrow(1.0, layoutRow3);
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("0px");
 		layoutRow3.getStyle().set("flex-grow", "1");
 		h42.setText(""+sc.getNumeroSeriale());
-		h42.setWidth("max-content");
+		h42.setWidth(width);
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");

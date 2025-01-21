@@ -46,28 +46,29 @@ public class LoginPView extends Composite<VerticalLayout> {
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
-		layoutColumn2.getStyle().set("flex-grow", "0.02");
+		String style = "flex-grow";
+		layoutColumn2.getStyle().set(style, "0.02");
 		h6.setText("INSERISCI LE CREDENZIALI");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, h6);
 		h6.setWidth("max-content");
 		layoutColumn3.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn3);
 		layoutColumn3.setWidth("100%");
-		layoutColumn3.getStyle().set("flex-grow", "0.02");
+		layoutColumn3.getStyle().set(style, "0.02");
 		textField.setLabel("USERNAME");
 		layoutColumn3.setAlignSelf(FlexComponent.Alignment.CENTER, textField);
 		textField.setWidth("200px");
 		layoutColumn4.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn4);
 		layoutColumn4.setWidth("100%");
-		layoutColumn4.getStyle().set("flex-grow", "0.02");
+		layoutColumn4.getStyle().set(style, "0.02");
 		passwordField.setLabel("PASSWORD");
 		layoutColumn4.setAlignSelf(FlexComponent.Alignment.CENTER, passwordField);
 		passwordField.setWidth("200px");
 		layoutColumn5.setWidthFull();
 		layoutColumn4.setFlexGrow(1.0, layoutColumn5);
 		layoutColumn5.setWidth("100%");
-		layoutColumn5.getStyle().set("flex-grow", "0.02");
+		layoutColumn5.getStyle().set(style, "0.02");
 		buttonPrimary.setText("ACCEDI");
 		buttonPrimary.addClickShortcut(com.vaadin.flow.component.Key.ENTER);
 		layoutColumn5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
@@ -76,12 +77,12 @@ public class LoginPView extends Composite<VerticalLayout> {
 		layoutColumn.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn);
 		layoutColumn.setWidth("100%");
-		layoutColumn.getStyle().set("flex-grow", "0.02");
+		layoutColumn.getStyle().set(style, "0.02");
 
 		buttonPrimary3.setText("TORNA INDIETRO");
 		layoutColumn5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
 		buttonPrimary3.setWidth("198px");
-		buttonPrimary3.getStyle().set("flex-grow", "1");
+		buttonPrimary3.getStyle().set(style, "1");
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
 		getContent().add(h1);

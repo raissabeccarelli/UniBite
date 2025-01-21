@@ -55,12 +55,14 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		VerticalLayout layoutColumn4 = new VerticalLayout();
 		Button buttonPrimary4 = new Button();
 		getContent().setWidth("100%");
-		getContent().getStyle().set("flex-grow", "1");
+		String style = "flex-grow";
+		String dim = "min-content";
+		getContent().getStyle().set(style, "1");
 		layoutRow.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutRow);
 		layoutRow.addClassName(Gap.MEDIUM);
 		layoutRow.setWidth("100%");
-		layoutRow.setHeight("min-content");
+		layoutRow.setHeight(dim);
 		layoutRow.setAlignItems(Alignment.CENTER);
 		layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
 
@@ -68,11 +70,11 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		layoutRow.setFlexGrow(1.0, layoutRow2);
 		layoutRow2.addClassName(Gap.MEDIUM);
 		layoutRow2.setWidth("100%");
-		layoutRow2.setHeight("min-content");
+		layoutRow2.setHeight(dim);
 		h3.setText("MODIFICA IL MENU' DEL GIORNO");
 		h3.setWidth("max-content");
 		buttonPrimary.setText("LOGOUT");
-		buttonPrimary.setWidth("min-content");
+		buttonPrimary.setWidth(dim);
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		textSmall.setText(
 				"Per aggiungere un piatto al menù, selezionalo e clicca \"Aggiungi quantità\". Per eliminarlo dal menù, selezionalo e clicca \"Elimina piatto\". Per aggiungere una ricetta seleziona \"Aggiungi ricetta\".");
@@ -82,26 +84,26 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		getContent().setFlexGrow(1.0, layoutRow3);
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("100%");
-		layoutRow3.setHeight("min-content");
+		layoutRow3.setHeight(dim);
 		layoutRow3.setAlignItems(Alignment.START);
 		layoutRow3.setJustifyContentMode(JustifyContentMode.START);
 		buttonPrimary2.setText("Aggiungi ricetta");
-		buttonPrimary2.setWidth("min-content");
+		buttonPrimary2.setWidth(dim);
 		buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutRow6.setHeightFull();
 		layoutRow3.setFlexGrow(1.0, layoutRow6);
 		layoutRow6.addClassName(Gap.MEDIUM);
-		layoutRow6.getStyle().set("flex-grow", "1");
-		layoutRow6.getStyle().set("flex-grow", "1");
+		layoutRow6.getStyle().set(style, "1");
+		layoutRow6.getStyle().set(style, "1");
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
-		layoutColumn2.getStyle().set("flex-grow", "1");
+		layoutColumn2.getStyle().set(style, "1");
 		layoutRow4.setWidthFull();
 		layoutColumn2.setFlexGrow(1.0, layoutRow4);
 		layoutRow4.addClassName(Gap.MEDIUM);
 		layoutRow4.setWidth("100%");
-		layoutRow4.getStyle().set("flex-grow", "1");
+		layoutRow4.getStyle().set(style, "1");
 
 		grid.setWidth("5000px");
 		// Imposta le colonne della Grid
@@ -118,17 +120,17 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		layoutRow4.setFlexGrow(1.0, layoutRow5);
 		layoutRow5.addClassName(Gap.MEDIUM);
 		layoutRow5.setWidth("100%");
-		layoutRow5.getStyle().set("flex-grow", "1");
+		layoutRow5.getStyle().set(style, "1");
 		layoutColumn3.setHeightFull();
 		layoutRow5.setFlexGrow(1.0, layoutColumn3);
 		layoutColumn3.setWidth("100%");
-		layoutColumn3.getStyle().set("flex-grow", "1");
+		layoutColumn3.getStyle().set(style, "1");
 		layoutColumn3.setJustifyContentMode(JustifyContentMode.START);
 		layoutColumn3.setAlignItems(Alignment.CENTER);
 		numberField.setLabel("Inserisci porzioni");
 		numberField.setWidth("179px");
 		buttonPrimary3.setText("Imposta il numero di porzioni");
-		buttonPrimary3.setWidth("min-content");
+		buttonPrimary3.setWidth(dim);
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutColumn4.setWidthFull();
 		layoutColumn3.setFlexGrow(1.0, layoutColumn4);

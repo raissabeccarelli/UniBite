@@ -84,12 +84,8 @@ public class StudenteDocente extends Utente {
 	public boolean login(int matricola, String pwd) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
-		boolean exists = dslContext.fetchExists(dslContext.selectFrom(Accountutenti.ACCOUNTUTENTI).where(
+		return dslContext.fetchExists(dslContext.selectFrom(Accountutenti.ACCOUNTUTENTI).where(
 				Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(matricola).and(Accountutenti.ACCOUNTUTENTI.PASSWORD.eq(pwd))));
-		if (exists) {
-			return true;
-		}
-		return false;
 	}
 
 }
