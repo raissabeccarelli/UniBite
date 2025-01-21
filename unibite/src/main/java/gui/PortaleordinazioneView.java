@@ -29,7 +29,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import generated.tables.*;
 import controller.Carrello;
 import controller.CarrelloObserver;
-import controller.Esterno;
 
 import controller.StudenteDocente;
 import model.Connessione;

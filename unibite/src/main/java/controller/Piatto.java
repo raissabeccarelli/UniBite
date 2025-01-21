@@ -31,8 +31,7 @@ public class Piatto {
 		DSLContext dslContext = connessione.getDslContext();
 		dslContext.insertInto(Piatti.PIATTI)
 				.columns(Piatti.PIATTI.NOME, Piatti.PIATTI.DESCRIZIONE, Piatti.PIATTI.INGREDIENTI,
-						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO,
-						Piatti.PIATTI.IMMAGINE)
+						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO, Piatti.PIATTI.IMMAGINE)
 				.values(nome, descrizione, ingredienti, allergeni, tipo.getValue(),	BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine)
 				.execute();
 	}

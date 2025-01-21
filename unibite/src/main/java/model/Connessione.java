@@ -8,8 +8,8 @@ import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
 public class Connessione {
-	public final static String dbRelFile = "..\\unibite\\src\\main\\resources\\UNIBitedb.db";
-	public final static String urlDb = "jdbc:sqlite:" + dbRelFile;
+	public final static String DB_REL_FILE = "..\\unibite\\src\\main\\resources\\UNIBitedb.db";
+	public final static String URL_DB = "jdbc:sqlite:" + DB_REL_FILE;
 
 	private static Connessione instance;
 	DSLContext dslContext;
@@ -17,7 +17,7 @@ public class Connessione {
 
 	private Connessione() {
 		try {
-			this.conn = DriverManager.getConnection(urlDb);
+			this.conn = DriverManager.getConnection(URL_DB);
 			this.dslContext = DSL.using(conn);
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore durante la connessione al database: " + e.getMessage(), e);
