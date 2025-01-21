@@ -10,9 +10,6 @@ import java.util.Set;
 
 import org.jooq.DSLContext;
 import org.jooq.Record1;
-import org.jooq.Record2;
-
-import com.vaadin.flow.component.grid.Grid;
 
 import generated.tables.*;
 import model.Connessione;

@@ -1,22 +1,15 @@
 package model;
 
-import java.io.File;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.jooq.DSLContext;
-import org.jooq.Record1;
-import org.jooq.Result;
 import org.jooq.impl.DSL;
 
-import generated.*;
-import controller.Piatto;
-
 public class Connessione {
-	public static String DB_REL_FILE = "..\\unibite\\src\\main\\resources\\UNIBitedb.db";
-	public static String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
+	public final static String dbRelFile = "..\\unibite\\src\\main\\resources\\UNIBitedb.db";
+	public final static String urlDb = "jdbc:sqlite:" + dbRelFile;
 
 	private static Connessione instance;
 	DSLContext dslContext;
@@ -24,7 +17,7 @@ public class Connessione {
 
 	private Connessione() {
 		try {
-			this.conn = DriverManager.getConnection(DB_URL);
+			this.conn = DriverManager.getConnection(urlDb);
 			this.dslContext = DSL.using(conn);
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore durante la connessione al database: " + e.getMessage(), e);

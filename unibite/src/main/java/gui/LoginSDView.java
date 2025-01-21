@@ -17,17 +17,13 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
-import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.PasswordField;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
-import controller.Carrello;
 import controller.StudenteDocente;
-import controller.Utente;
 
 @PageTitle("Login SD")
 @Route("my-view")
@@ -170,10 +166,9 @@ public class LoginSDView extends Composite<VerticalLayout> {
 
 		StudenteDocente sd = new StudenteDocente();
 		buttonPrimary.addClickListener(event -> {
-			if (sd.login(matricola.getValue(), passwordField.getValue()) == true) {
+			if (sd.login(matricola.getValue(), passwordField.getValue())) {
 				
 		        VaadinSession.getCurrent().setAttribute("CARRELLO", null);
-		        //VaadinSession.getCurrent().setAttribute("E", null);	
 		        StudenteDocente st = new StudenteDocente(matricola.getValue());
 				VaadinSession.getCurrent().setAttribute("SDC", st);
 				UI.getCurrent().navigate("my-view4");

@@ -2,11 +2,8 @@ package gui;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
-
-import controller.Carrello;
 import model.Connessione;
 
-import org.jooq.DSLContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,7 +22,6 @@ public class Application implements AppShellConfigurator {
 	public static void main(String[] args) {
 
 		Connessione connessione = Connessione.getInstance();
-		DSLContext context = connessione.getDslContext();
 		SpringApplication.run(Application.class, args);
 		
 		connessione.close();

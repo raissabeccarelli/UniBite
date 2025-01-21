@@ -1,13 +1,11 @@
 package gui;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jooq.DSLContext;
 import org.jooq.Record2;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -17,11 +15,7 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.map.Map;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.notification.NotificationVariant;
-import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -31,10 +25,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
-
-
-
-
 
 import generated.tables.*;
 import controller.Carrello;
@@ -216,49 +206,49 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 		layoutRow.setWidth("100%");
 		layoutRow.getStyle().set("flex-grow", "1");
 		
-		
-		pasta.setWidth("150px");
-		pasta.setHeight("150px");
-		pasta2.setWidth("150px");
-		pasta2.setHeight("150px");
-		pasta3.setWidth("150px");
-		pasta3.setHeight("150px");
-		riso.setWidth("150px");
-		riso.setHeight("150px");
-		riso2.setWidth("150px");
-		riso2.setHeight("150px");
-		riso3.setWidth("150px");
-		riso3.setHeight("150px");
-		carne.setWidth("150px");
-		carne.setHeight("150px");
-		carne2.setWidth("150px");
-		carne2.setHeight("150px");
-		carne3.setWidth("150px");
-		carne3.setHeight("150px");
-		pesce.setWidth("150px");
-		pesce.setHeight("150px");
-		pesce2.setWidth("150px");
-		pesce2.setHeight("150px");
-		pesce3.setWidth("150px");
-		pesce3.setHeight("150px");
-		contorno.setWidth("150px");
-		contorno.setHeight("150px");
-		contorno2.setWidth("150px");
-		contorno2.setHeight("150px");
-		contorno3.setWidth("150px");
-		contorno3.setHeight("150px");
-		dolce.setWidth("150px");
-		dolce.setHeight("150px");
-		dolce2.setWidth("150px");
-		dolce2.setHeight("150px");
-		dolce3.setWidth("150px");
-		dolce3.setHeight("150px");
-		frutta.setWidth("150px");
-		frutta.setHeight("150px");
-		frutta2.setWidth("150px");
-		frutta2.setHeight("150px");
-		frutta3.setWidth("150px");
-		frutta3.setHeight("150px");
+		String dim= "150px";
+		pasta.setWidth(dim);
+		pasta.setHeight(dim);
+		pasta2.setWidth(dim);
+		pasta2.setHeight(dim);
+		pasta3.setWidth(dim);
+		pasta3.setHeight(dim);
+		riso.setWidth(dim);
+		riso.setHeight(dim);
+		riso2.setWidth(dim);
+		riso2.setHeight(dim);
+		riso3.setWidth(dim);
+		riso3.setHeight(dim);
+		carne.setWidth(dim);
+		carne.setHeight(dim);
+		carne2.setWidth(dim);
+		carne2.setHeight(dim);
+		carne3.setWidth(dim);
+		carne3.setHeight(dim);
+		pesce.setWidth(dim);
+		pesce.setHeight(dim);
+		pesce2.setWidth(dim);
+		pesce2.setHeight(dim);
+		pesce3.setWidth(dim);
+		pesce3.setHeight(dim);
+		contorno.setWidth(dim);
+		contorno.setHeight(dim);
+		contorno2.setWidth(dim);
+		contorno2.setHeight(dim);
+		contorno3.setWidth(dim);
+		contorno3.setHeight(dim);
+		dolce.setWidth(dim);
+		dolce.setHeight(dim);
+		dolce2.setWidth(dim);
+		dolce2.setHeight(dim);
+		dolce3.setWidth(dim);
+		dolce3.setHeight(dim);
+		frutta.setWidth(dim);
+		frutta.setHeight(dim);
+		frutta2.setWidth(dim);
+		frutta2.setHeight(dim);
+		frutta3.setWidth(dim);
+		frutta3.setHeight(dim);
 		
 		layoutRow2.setHeightFull();
 		layoutRow.setFlexGrow(1.0, layoutRow2);
@@ -763,8 +753,7 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 		
 		//LOGICA AGGIUNGI CARRELLO		
 		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");
-		
-		//Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");		
+			
 		if (c == null) { 
 		    if (sd == null) {
 		        Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");
@@ -811,17 +800,17 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 			}	
 			
 			});
-		
+		String info= "infoPiatto";
 		buttonSecondary.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", primi1); 
+			VaadinSession.getCurrent().setAttribute(info, primi1); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary2.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", primi2); 
+			VaadinSession.getCurrent().setAttribute(info, primi2); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary3.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", primi3); 
+			VaadinSession.getCurrent().setAttribute(info, primi3); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		
@@ -839,15 +828,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 			
          });
 		buttonSecondary4.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi1); 
+			VaadinSession.getCurrent().setAttribute(info, secondi1); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary5.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi2); 
+			VaadinSession.getCurrent().setAttribute(info, secondi2); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary6.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", secondi3); 
+			VaadinSession.getCurrent().setAttribute(info, secondi3); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		//CONTORNI
@@ -864,15 +853,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 			
          });
 		buttonSecondary7.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni1); 
+			VaadinSession.getCurrent().setAttribute(info, contorni1); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary8.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni2); 
+			VaadinSession.getCurrent().setAttribute(info, contorni2); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary9.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", contorni3); 
+			VaadinSession.getCurrent().setAttribute(info, contorni3); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		//DOLCI E FRUTTA
@@ -889,15 +878,15 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 			
          });
 		buttonSecondary10.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta1); 
+			VaadinSession.getCurrent().setAttribute(info, dolciFrutta1); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary11.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta2); 
+			VaadinSession.getCurrent().setAttribute(info, dolciFrutta2); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		buttonSecondary12.addClickListener(event -> {
-			VaadinSession.getCurrent().setAttribute("infoPiatto", dolciFrutta3); 
+			VaadinSession.getCurrent().setAttribute(info, dolciFrutta3); 
 			UI.getCurrent().navigate("my-view5");
 		});
 		

@@ -1,7 +1,6 @@
 package gui;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -12,33 +11,25 @@ import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.listbox.MultiSelectListBox;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.function.ValueProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 import controller.Carrello;
-import controller.Esterno;
-import controller.Personale;
-import controller.Piatto;
 import controller.StudenteDocente;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.jooq.Record1;
-import org.jooq.Record2;
 
 @PageTitle("Carrello")
 @Route("my-view6")
@@ -46,8 +37,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 
 	public CarrelloView() {
 		
-		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");	
-		Esterno e = (Esterno) VaadinSession.getCurrent().getAttribute("E");		
+		StudenteDocente sd = (StudenteDocente) VaadinSession.getCurrent().getAttribute("SDC");		
 		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");	
 		
 		List<Map.Entry<String, String>> piatti = c.getLista();

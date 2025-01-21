@@ -8,7 +8,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
-import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -24,7 +23,6 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import controller.Carrello;
 import controller.StudenteDocente;
 import generated.tables.Accountutenti;
-import generated.tables.Piatti;
 import model.Connessione;
 
 @PageTitle("Pagamento")
@@ -92,8 +90,9 @@ public class PagamentoView extends Composite<VerticalLayout> {
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
 		buttonPrimary.setText("PAGA IN CASSA");
 		layoutRow3.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
-		buttonPrimary.setWidth("300px");
-		buttonPrimary.setHeight("300px");
+		String dimensioneBottone= "300px";
+		buttonPrimary.setWidth(dimensioneBottone);
+		buttonPrimary.setHeight(dimensioneBottone);
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		layoutRow5.setHeightFull();
 		layoutRow3.setFlexGrow(1.0, layoutRow5);
@@ -102,8 +101,8 @@ public class PagamentoView extends Composite<VerticalLayout> {
 		layoutRow5.getStyle().set("flex-grow", "1");
 		buttonPrimary2.setText("PAGA COL CREDITO VIRTUALE");
 		layoutRow3.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary2);
-		buttonPrimary2.setWidth("300px");
-		buttonPrimary2.setHeight("300px");
+		buttonPrimary2.setWidth(dimensioneBottone);
+		buttonPrimary2.setHeight(dimensioneBottone);
 		buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		getContent().add(h1);
 		getContent().add(hr);

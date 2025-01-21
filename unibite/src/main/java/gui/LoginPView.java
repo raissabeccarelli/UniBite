@@ -18,7 +18,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import controller.Personale;
-import controller.StudenteDocente;
 
 @PageTitle("Login P")
 @Route("my-view2")
@@ -101,7 +100,7 @@ public class LoginPView extends Composite<VerticalLayout> {
 
 		Personale p = new Personale();
 		buttonPrimary.addClickListener(event -> {
-			if (p.login(textField.getValue(), passwordField.getValue()) == true) {
+			if (p.login(textField.getValue(), passwordField.getValue())) {
 				UI.getCurrent().navigate("my-view9");
 			}else {
 				Notification notification = new Notification(

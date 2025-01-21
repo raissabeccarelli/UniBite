@@ -8,7 +8,6 @@ import org.jooq.Record2;
 import org.jooq.Record6;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -26,7 +25,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
 import generated.tables.*;
-//import generated.tables.Piatti;
 
 import model.Connessione;
 
@@ -51,20 +49,21 @@ public class InfoPiattiView extends Composite<VerticalLayout> {
 		Image contorno = new Image("images/contorno.jpg", "contorno");
 		Image dolce = new Image("images/dolce.jpg", "dolce");
 		Image frutta = new Image("images/frutta.jpg", "frutta");
-		pasta.setWidth("150px");
-		pasta.setHeight("150px");
-		riso.setWidth("150px");
-		riso.setHeight("150px");
-		carne.setWidth("150px");
-		carne.setHeight("150px");
-		pesce.setWidth("150px");
-		pesce.setHeight("150px");
-		contorno.setWidth("150px");
-		contorno.setHeight("150px");
-		dolce.setWidth("150px");
-		dolce.setHeight("150px");
-		frutta.setWidth("150px");
-		frutta.setHeight("150px");
+		String dimensioneFoto = "150px";
+		pasta.setWidth(dimensioneFoto);
+		pasta.setHeight(dimensioneFoto);
+		riso.setWidth(dimensioneFoto);
+		riso.setHeight(dimensioneFoto);
+		carne.setWidth(dimensioneFoto);
+		carne.setHeight(dimensioneFoto);
+		pesce.setWidth(dimensioneFoto);
+		pesce.setHeight(dimensioneFoto);
+		contorno.setWidth(dimensioneFoto);
+		contorno.setHeight(dimensioneFoto);
+		dolce.setWidth(dimensioneFoto);
+		dolce.setHeight(dimensioneFoto);
+		frutta.setWidth(dimensioneFoto);
+		frutta.setHeight(dimensioneFoto);
 		
 		
 		

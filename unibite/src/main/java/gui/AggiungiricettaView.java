@@ -11,19 +11,12 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
-
 import controller.Personale;
-import controller.StudenteDocente;
 import controller.TipoPortata;
-
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 @PageTitle("Aggiungi ricetta")
@@ -33,8 +26,8 @@ public class AggiungiricettaView extends Composite<VerticalLayout> {
 	public AggiungiricettaView() {
 		// Layout principale che contiene il form
 		VerticalLayout layoutColumn2 = new VerticalLayout();
-		ComboBox<TipoPortata> comboBox = new ComboBox();
-		ComboBox<String> comboBox2 = new ComboBox();
+		ComboBox<TipoPortata> comboBox = new ComboBox<>();
+		ComboBox<String> comboBox2 = new ComboBox<>();
 		layoutColumn2.setWidthFull(); // Assicura che il layout prenda tutta la larghezza disponibile
 		layoutColumn2.setHeightFull(); // Assicura che il layout prenda tutta l'altezza disponibile
 		layoutColumn2.setAlignItems(Alignment.CENTER); // Centra orizzontalmente
@@ -56,28 +49,29 @@ public class AggiungiricettaView extends Composite<VerticalLayout> {
 		// Sezione del nome ricetta e descrizione
 		HorizontalLayout layoutRow = new HorizontalLayout();
 		TextField textField = new TextField("Nome ricetta");
-		textField.setWidth("450px");
+		String width = "450px";
+		textField.setWidth(width);
 		TextField textField2 = new TextField("Descrizione");
-		textField2.setWidth("450px");
+		textField2.setWidth(width);
 		layoutRow.add(textField, textField2);
 		layoutRow.setAlignItems(Alignment.CENTER); // Centra gli input orizzontalmente
 
 		// Sezione degli ingredienti e allergeni
 		HorizontalLayout layoutRow2 = new HorizontalLayout();
 		TextField textField3 = new TextField("Ingredienti");
-		textField3.setWidth("450px");
+		textField3.setWidth(width);
 		TextField textField4 = new TextField("Allergeni");
-		textField4.setWidth("450px");
+		textField4.setWidth(width);
 		layoutRow2.add(textField3, textField4);
 		layoutRow2.setAlignItems(Alignment.CENTER); // Centra gli input orizzontalmente
 
 		// Sezione dei selettori
 		HorizontalLayout layoutRow3 = new HorizontalLayout();
 		comboBox.setLabel("Tipo di portata");
-		comboBox.setWidth("450px");
+		comboBox.setWidth(width);
 		setComboBoxSampleData(comboBox);
 		comboBox2.setLabel("Categoria");
-		comboBox2.setWidth("450px");
+		comboBox2.setWidth(width);
 		setComboBoxSampleData2(comboBox2);
 		layoutRow3.add(comboBox, comboBox2);
 		layoutRow3.setAlignItems(Alignment.CENTER); // Centra i selettori orizzontalmente
@@ -118,7 +112,7 @@ public class AggiungiricettaView extends Composite<VerticalLayout> {
 		comboBox.setItems(options.keySet());
 
 		// Genera l'etichetta per ogni valore numerico
-		comboBox.setItemLabelGenerator(value -> options.get(value));
+		comboBox.setItemLabelGenerator(options::get);
 	}
 
 	private void setComboBoxSampleData2(ComboBox<String> comboBox) {
@@ -135,7 +129,7 @@ public class AggiungiricettaView extends Composite<VerticalLayout> {
 		comboBox.setItems(options.keySet());
 
 		// Genera l'etichetta per ogni valore numerico
-		comboBox.setItemLabelGenerator(value -> options.get(value));
+		comboBox.setItemLabelGenerator(options::get);
 	}
 
 }
