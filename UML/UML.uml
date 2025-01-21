@@ -1276,6 +1276,19 @@ Primo piatto selezionato</body>
     <message xmi:type="uml:Message" xmi:id="_a2gqUNdXEe-QMevdpTj_Qg" name="2.5.2: estrai piatti selezionati" messageSort="asynchCall" receiveEvent="_a2hRYddXEe-QMevdpTj_Qg" sendEvent="_a2hRYNdXEe-QMevdpTj_Qg"/>
     <message xmi:type="uml:Message" xmi:id="_c21jUNdXEe-QMevdpTj_Qg" name="2.5.3: piatti selezionati" messageSort="asynchCall" receiveEvent="_c22KYNdXEe-QMevdpTj_Qg" sendEvent="_c21jUddXEe-QMevdpTj_Qg"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_2XhX8NgKEe-POv0P09rYFg" name="unibite">
+    <packagedElement xmi:type="uml:Package" xmi:id="_58QqANgKEe-POv0P09rYFg" name="gui">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_HwqOANgLEe-POv0P09rYFg" client="_58QqANgKEe-POv0P09rYFg" supplier="_844MINgKEe-POv0P09rYFg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_L_b7kNgLEe-POv0P09rYFg" client="_58QqANgKEe-POv0P09rYFg" supplier="__foL8NgKEe-POv0P09rYFg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_N8vVwNgLEe-POv0P09rYFg" client="_58QqANgKEe-POv0P09rYFg" supplier="_Az53QNgLEe-POv0P09rYFg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_844MINgKEe-POv0P09rYFg" name="controller">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_PrZ3ANgLEe-POv0P09rYFg" client="_844MINgKEe-POv0P09rYFg" supplier="_Az53QNgLEe-POv0P09rYFg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_QVYBENgLEe-POv0P09rYFg" client="_844MINgKEe-POv0P09rYFg" supplier="__foL8NgKEe-POv0P09rYFg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__foL8NgKEe-POv0P09rYFg" name="generated"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Az53QNgLEe-POv0P09rYFg" name="model"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_HqhkIKZjEe-CDP28a83xCw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hql1kKZjEe-CDP28a83xCw" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
