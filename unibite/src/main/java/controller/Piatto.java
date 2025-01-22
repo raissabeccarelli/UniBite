@@ -20,7 +20,7 @@ public class Piatto {
 	public Piatto(String nome, String descrizione, String ingredienti, String allergeni, TipoPortata tipo,
 			float prezzoUnitario, String immagine, int numeroPorzioni) {
 		this.nome = nome;
-		descrizione = descrizione;
+		this.descrizione = descrizione;
 		this.ingredienti = ingredienti;
 		this.allergeni = allergeni;
 		this.tipo = tipo;
@@ -31,8 +31,8 @@ public class Piatto {
 		DSLContext dslContext = connessione.getDslContext();
 		dslContext.insertInto(Piatti.PIATTI)
 				.columns(Piatti.PIATTI.NOME, Piatti.PIATTI.DESCRIZIONE, Piatti.PIATTI.INGREDIENTI,
-						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO, Piatti.PIATTI.IMMAGINE)
-				.values(nome, descrizione, ingredienti, allergeni, tipo.getValue(),	BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine)
+						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO, Piatti.PIATTI.IMMAGINE, Piatti.PIATTI.NUMEROPORZIONI)
+				.values(nome, descrizione, ingredienti, allergeni, tipo.getValue(),	BigDecimal.valueOf(setPrezzoUnitario(tipo)), immagine, numeroPorzioni)
 				.execute();
 	}
 

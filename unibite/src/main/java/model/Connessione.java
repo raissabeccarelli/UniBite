@@ -46,5 +46,19 @@ public class Connessione {
 			e.printStackTrace();
 		}
 	}
+	
+	public Connection getConnection() {
+	    return conn;
+	}
+	
+	public boolean isClose() {
+	    try {
+	        // Verifica se la connessione è chiusa
+	        return conn == null || conn.isClosed();
+	    } catch (SQLException e) {
+	        // Gestisce eventuali eccezioni
+	        throw new RuntimeException("Errore durante il controllo dello stato della connessione: " + e.getMessage(), e);
+	    }
+	}
 
 }

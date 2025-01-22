@@ -19,8 +19,7 @@ public class StudenteDocente extends Utente {
 	public String passwordU;
 	public float contoVirtuale;
 
-	public StudenteDocente(int matricola, String password, String nome, String cognome, String email, int fascia,
-			float contoVirtuale) {
+	public StudenteDocente(int matricola, String password, String nome, String cognome, String email, int fascia, float contoVirtuale) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.matricola = matricola;

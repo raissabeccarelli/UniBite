@@ -57,6 +57,7 @@ public class Carrello {
 			.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
 		prezzoTot = prezzoTot.add(result.get(0).value1());   
 		}
+		
 		List<Record1<Integer>> fascia = dslContext.select(Accountutenti.ACCOUNTUTENTI.FASCIAISEE)
 				.from(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(mat)).fetch();
 		if(fascia.get(0).value1() == 1) {
@@ -77,14 +78,15 @@ public class Carrello {
 		List<Record1<String>> result = dslContext.select(Piatti.PIATTI.NOME)
 		.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq(nome)).fetch();
 		String piatto = result.get(0).value1();
-		LOGGER.info(piatto);
 		String valore = " ";
 		piattiSelezionati.add(new AbstractMap.SimpleEntry<>(piatto, valore));
 		
 		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
-		
-		notifyObservers(nome);
+		LOGGER.info(piattiSelezionati);
+		if(observers.size()>=1) {
+			notifyObservers(nome);
+		}
 	}
 	
 	public  void aggiungiPiattoConFormaggio(String nome) {
@@ -99,11 +101,14 @@ public class Carrello {
 		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, Piatti.PIATTI.NUMEROPORZIONI.minus(1))
 		.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 		
-		notifyObservers(nome);
+		if(observers.size()>=1) {
+			notifyObservers(nome);
+		}
 	}
 	
 	public  void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
 		int conta=0;
+		LOGGER.info(selezione);
 		Entry<String, String> primoRecord = selezione.iterator().next();
 		String nomePiatto = primoRecord.getKey();
 		LOGGER.info(nomePiatto);

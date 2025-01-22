@@ -65,9 +65,6 @@ public class InfoPiattiView extends Composite<VerticalLayout> {
 		frutta.setWidth(dimensioneFoto);
 		frutta.setHeight(dimensioneFoto);
 		
-		
-		
-		
 		VerticalLayout layoutColumn2 = new VerticalLayout();
 		H3 h3 = new H3();
 		VerticalLayout layoutColumn3 = new VerticalLayout();
