@@ -120,7 +120,7 @@ public class Carrello {
 	private final List<CarrelloObserver> observers = new ArrayList<>();
 		public void addObserver(CarrelloObserver observer) {
 	        observers.add(observer);
-	        logger.info(observers);
+	        LOGGER.info(observers);
 	    }
 
 	    public void removeObserver(CarrelloObserver observer) {
