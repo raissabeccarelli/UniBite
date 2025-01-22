@@ -6,6 +6,7 @@
 .mvn/
 *.iml
 .DS_Store
+.prettierrc.json
 
 # The following files are generated/updated by vaadin-maven-plugin
 node_modules/
@@ -19,3 +20,6 @@ drivers/
 error-screenshots/
 webpack.generated.js
 /target/
+/eclipse-formatter.xml/
+/mvnw/
+/mvnw.cmd/
