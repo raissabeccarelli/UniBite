@@ -1197,6 +1197,26 @@ Primo piatto selezionato</body>
     <packagedElement xmi:type="uml:Package" xmi:id="__foL8NgKEe-POv0P09rYFg" name="generated"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_Az53QNgLEe-POv0P09rYFg" name="model"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_HMxewNjEEe-to9dxJ9TFWg" name="ComponentDiagram">
+    <packagedElement xmi:type="uml:Component" xmi:id="_Ll2-4NjEEe-to9dxJ9TFWg" name="controller">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_heraYNjGEe-to9dxJ9TFWg" name="&lt;&lt;use>>" client="_Ll2-4NjEEe-to9dxJ9TFWg" supplier="_abdhMNjEEe-to9dxJ9TFWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_ZV0u0NjEEe-to9dxJ9TFWg" name="gui">
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_kP-vQNjEEe-to9dxJ9TFWg" name="Application">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_voEMYNjFEe-to9dxJ9TFWg" name="main"/>
+      </nestedClassifier>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_YGXnMNjGEe-to9dxJ9TFWg" name="&lt;&lt;use>>" client="_ZV0u0NjEEe-to9dxJ9TFWg" supplier="_Ll2-4NjEEe-to9dxJ9TFWg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_dp120NjGEe-to9dxJ9TFWg" name="&lt;&lt;use>>" client="_ZV0u0NjEEe-to9dxJ9TFWg" supplier="_abdhMNjEEe-to9dxJ9TFWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_abdhMNjEEe-to9dxJ9TFWg" name="model">
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_qpE_UNjEEe-to9dxJ9TFWg" name="Connessione">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Hn77UNjFEe-to9dxJ9TFWg" name="getInstance"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_IsdTYNjFEe-to9dxJ9TFWg" name="close"/>
+      </nestedClassifier>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_lxhlENjFEe-to9dxJ9TFWg" name="&lt;&lt;use>>" client="_abdhMNjEEe-to9dxJ9TFWg" supplier="_Xu9pQNjFEe-to9dxJ9TFWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_Xu9pQNjFEe-to9dxJ9TFWg" name="Database"/>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_HqhkIKZjEe-CDP28a83xCw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hql1kKZjEe-CDP28a83xCw" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
