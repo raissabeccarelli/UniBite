@@ -1,5 +1,8 @@
 package gui;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.H1;
@@ -13,14 +16,16 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import controller.Carrello;
 import controller.Scontrino;
 
 @PageTitle("Scontrino")
 @Route("my-view8")
 public class ScontrinoView extends Composite<VerticalLayout> {
-
+	private static final Logger logger = LogManager.getLogger(ScontrinoView.class);
 	public ScontrinoView() {
 		Scontrino sc = new Scontrino();
 		HorizontalLayout layoutRow2 = new HorizontalLayout();
@@ -78,7 +83,9 @@ public class ScontrinoView extends Composite<VerticalLayout> {
 		layoutRow.add(h42);
 		getContent().add(layoutColumn2);
 		layoutColumn2.add(image);
-		
+		Carrello c = (Carrello) VaadinSession.getCurrent().getAttribute("CARRELLO");
+		logger.info("Numero scontrino: " + sc.getNumeroSeriale());
+		logger.info("Ordine: " + c.getLista());
 		
 		  UI.getCurrent().getPage().executeJs(
 		            "setTimeout(() => window.location.href='', 5000);"
