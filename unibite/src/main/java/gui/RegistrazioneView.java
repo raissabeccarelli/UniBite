@@ -20,6 +20,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import controller.FasciaIsee;
 import controller.StudenteDocente;
 
 import java.util.LinkedHashMap;
@@ -45,7 +46,7 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		PasswordField passwordField = new PasswordField();
 		VerticalLayout layoutColumn3 = new VerticalLayout();
 		HorizontalLayout layoutRow3 = new HorizontalLayout();
-		ComboBox<Integer> comboBox = new ComboBox<>();
+		ComboBox<FasciaIsee> comboBox = new ComboBox<>();
 		HorizontalLayout layoutRow6 = new HorizontalLayout();
 		EmailField emailField = new EmailField();
 		VerticalLayout layoutColumn4 = new VerticalLayout();
@@ -153,16 +154,16 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		});
 	}
 
-	private void setComboBoxSampleData(ComboBox<Integer> comboBox) {
+	private void setComboBoxSampleData(ComboBox<FasciaIsee> comboBox) {
 		// Mappa che associa i valori numerici alle etichette
-		Map<Integer, String> options = new LinkedHashMap<>();
-		options.put(1, "Fascia A");
-		options.put(2, "Fascia B");
-		options.put(3, "Fascia C");
-		options.put(4, "Fascia D");
-		options.put(5, "Fascia E");
-		options.put(6, "Fascia F");
-		options.put(7, "Fascia G");
+		Map<FasciaIsee, String> options = new LinkedHashMap<>();
+		options.put(FasciaIsee.A, "Fascia A");
+		options.put(FasciaIsee.B, "Fascia B");
+		options.put(FasciaIsee.C, "Fascia C");
+		options.put(FasciaIsee.D, "Fascia D");
+		options.put(FasciaIsee.E, "Fascia E");
+		options.put(FasciaIsee.F, "Fascia F");
+		options.put(FasciaIsee.G, "Fascia G");
 		// Imposta i valori numerici come elementi della ComboBox
 		comboBox.setItems(options.keySet());
 

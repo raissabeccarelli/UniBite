@@ -77,8 +77,10 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		buttonPrimary.setWidth(dim);
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		textSmall.setText(
-				"Per aggiungere un piatto al menù, selezionalo e clicca \"Aggiungi quantità\". Per eliminarlo dal menù, selezionalo e clicca \"Elimina piatto\". Per aggiungere una ricetta seleziona \"Aggiungi ricetta\".");
-		textSmall.setWidth("5000px");
+				"Per aggiungere un piatto al menù, selezionalo e clicca \"Aggiungi quantità\". "
+				+ "Per eliminarlo dal menù, selezionalo e clicca \"Elimina piatto\". "
+				+ "Per aggiungere una ricetta seleziona \"Aggiungi ricetta\".");
+		textSmall.setWidth("100%");
 		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
 		layoutRow3.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutRow3);
@@ -171,6 +173,8 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
 		
+		            
+		 
 	}
-
+	
 }

@@ -15,11 +15,11 @@ public class StudenteDocente extends Utente {
 	public String cognome;
 	public int matricola;
 	public String email;
-	public int fascia;
+	public FasciaIsee fascia;
 	public String passwordU;
 	public float contoVirtuale;
 
-	public StudenteDocente(int matricola, String password, String nome, String cognome, String email, int fascia, float contoVirtuale) {
+	public StudenteDocente(int matricola, String password, String nome, String cognome, String email, FasciaIsee fascia, float contoVirtuale) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.matricola = matricola;
@@ -33,7 +33,7 @@ public class StudenteDocente extends Utente {
 				.columns(Accountutenti.ACCOUNTUTENTI.MATRICOLA, Accountutenti.ACCOUNTUTENTI.PASSWORD,
 						Accountutenti.ACCOUNTUTENTI.NOME, Accountutenti.ACCOUNTUTENTI.COGNOME,
 						Accountutenti.ACCOUNTUTENTI.EMAIL, Accountutenti.ACCOUNTUTENTI.FASCIAISEE)
-				.values(matricola, password, nome, cognome, email, fascia).execute();
+				.values(matricola, password, nome, cognome, email, fascia.getValue()).execute();
 	}
 
 	public StudenteDocente() {
@@ -72,7 +72,7 @@ public class StudenteDocente extends Utente {
 		return email;
 	}
 
-	public int getFascia() {
+	public FasciaIsee getFascia() {
 		return fascia;
 	}
 
