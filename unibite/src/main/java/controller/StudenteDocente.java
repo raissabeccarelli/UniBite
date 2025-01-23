@@ -52,10 +52,6 @@ public class StudenteDocente extends Utente {
 		return result.get(0).value1().setScale(2, RoundingMode.HALF_UP).floatValue();
 	}
 
-	public void setContoVirtuale(float contoVirtuale) {
-		this.contoVirtuale = contoVirtuale;
-	}
-
 	public String getNome() {
 		return nome;
 	}

@@ -116,6 +116,13 @@ class CarrelloTest {
 		c.eliminaPiatto(selezione);
 	}
 	
+	//matricola con il 30% di sconto sul totale
+	@Test void testPrezzoScontato() {
+		Carrello p = new Carrello (1086785);
+		p.aggiungiPiatto("Pasta al ragù"); //il prezzo scontato è di 1.393 al posto che 1.99
+		assertEquals(BigDecimal.valueOf(1.393).setScale(3, RoundingMode.HALF_UP), p.elaboraPrezzoScontato(p.getMatricola()));
+	
+	}
 	
 
 }

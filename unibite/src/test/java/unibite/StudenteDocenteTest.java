@@ -2,12 +2,18 @@ package unibite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
+
 import org.jooq.DSLContext;
+import org.jooq.Record1;
+import org.jooq.Result;
 import org.junit.jupiter.api.Test;
 
+import controller.Carrello;
 import controller.FasciaIsee;
 import controller.StudenteDocente;
 import generated.tables.Accountutenti;
+import generated.tables.Piatti;
 import model.Connessione;
 
 class StudenteDocenteTest {

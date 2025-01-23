@@ -2,7 +2,14 @@ package unibite;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.jooq.DSLContext;
+import org.jooq.Record1;
+import org.jooq.Record2;
+import org.jooq.Result;
 import org.junit.jupiter.api.Test;
 
 import controller.Personale;
@@ -51,4 +58,24 @@ class PersonaleTest {
 		dslContext.deleteFrom(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Spezzatino di maiale")).execute();
 	}
 	
+	/*@Test void testAggiungiPorzioni() {
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		
+		Result<Record1<Integer>> nIniz = dslContext.select(Piatti.PIATTI.NUMEROPORZIONI)
+				.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Pasta al ragù")).fetch();
+		int inizio=nIniz.getFirst().value1();
+		
+		Set<Record2<String, Integer>> piatto =  new Record2<String, Integer> ("Pasta al ragù", inizio);
+		Set<Record2<String, Integer>> selezione = new HashSet<>();
+		selezione.add(piatto);
+		p.aggiungiPorzioni(selezione, inizio+40); 
+		
+		Result<Record1<Integer>> nFin = dslContext.select(Piatti.PIATTI.NUMEROPORZIONI)
+				.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Pasta al ragù")).fetch();
+		int fine=nFin.getFirst().value1();
+		
+		assertEquals(40, fine-inizio);
+		p.aggiungiPorzioni(selezione, inizio);
+	}*/
 }
