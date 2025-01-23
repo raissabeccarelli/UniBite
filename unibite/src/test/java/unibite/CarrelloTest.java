@@ -26,7 +26,7 @@ class CarrelloTest {
 		c=new Carrello(1);
 	}
 
-	//Test che controlla che la matricoa associata al carrello sia corretta
+	//Test che controlla che la matricola associata al carrello sia corretta
 	@Test void testgetMatricola() {
 		assertEquals(1, c.getMatricola());
 	}
@@ -47,6 +47,7 @@ class CarrelloTest {
 		c.aggiungiPiatto("Braciola di maiale");
 		assertEquals("Braciola di maiale", c.getLista().get(0).getKey());
 		
+		//Elimina dal carrello e rimetti nelle porzioni disponibili
 		Map.Entry<String, String> piatto = Map.entry("Braciola di maiale", " ");
 		Set<Map.Entry<String, String>> selezione = new HashSet<>();
 		selezione.add(piatto);
@@ -59,6 +60,7 @@ class CarrelloTest {
 			assertEquals("Pasta al ragù", c.getLista().getFirst().getKey());
 			assertEquals("Aggiungi Formaggio", c.getLista().getFirst().getValue());
 			
+			//Elimina dal carrello e rimetti nelle porzioni disponibili
 			Map.Entry<String, String> piatto = Map.entry("Pasta al ragù", "Aggiungi Formaggio");
 			Set<Map.Entry<String, String>> selezione = new HashSet<>();
 			selezione.add(piatto);
@@ -71,6 +73,8 @@ class CarrelloTest {
 	@Test void testdiminuisciPiatto() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
+		
+		//Aggiunta del piatto nel carrello
 		Result<Record1<Integer>> nIniz = dslContext.select(Piatti.PIATTI.NUMEROPORZIONI)
 				.from(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Braciola di maiale")).fetch();
 		int inizio=nIniz.getFirst().value1();
@@ -81,6 +85,7 @@ class CarrelloTest {
 		int fine=nFin.getFirst().value1();
 		assertEquals(1, inizio-fine);
 		
+		//Rimozione del piatto dal carrello, la porzione torna nel database
 		Map.Entry<String, String> piatto = Map.entry("Braciola di maiale", " ");
 		Set<Map.Entry<String, String>> selezione = new HashSet<>();
 		selezione.add(piatto);
@@ -100,6 +105,7 @@ class CarrelloTest {
 		BigDecimal bigDecimal = new BigDecimal(4.97);
 		assertEquals(bigDecimal.setScale(2, RoundingMode.HALF_UP),c.elaboraPrezzo().setScale(2, RoundingMode.HALF_UP));
 		
+		//Rimuovi i piatti dal carrello
 		Map.Entry<String, String> secondo = Map.entry("Braciola di maiale", " ");
 		Map.Entry<String, String> primo = Map.entry("Pasta al ragù", " ");
 		Map.Entry<String, String> contorno = Map.entry("Broccoli", " ");

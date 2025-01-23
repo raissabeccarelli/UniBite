@@ -16,7 +16,7 @@ class StudenteDocenteTest {
 		s=new StudenteDocente();
 	}
 	
-	//verifica che il login avvenga correttamente
+	//Verifica che il login avvenga correttamente
 	@Test void loginTest() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
@@ -28,7 +28,7 @@ class StudenteDocenteTest {
 		assertTrue(s.login(1086785, "Raissa1234"));
 	}
 	
-	//verifica che il conto virtuale sia pari a 0 quando creo un nuovo studente
+	//Verifica che il conto virtuale sia pari a 0 quando creo un nuovo studente
 	@Test void contoVirtualeTest() {
 		StudenteDocente stu=new StudenteDocente(1088068, "Davi", "Davide", "Carissoni", "d.carissoni@studenti.unibg.it",FasciaIsee.A, 0);
 		assertEquals(0, stu.getContoVirtuale(stu.getMatricola()));

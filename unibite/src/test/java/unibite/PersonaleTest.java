@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import controller.Personale;
 import controller.TipoPortata;
+import generated.tables.Accountpersonale;
 import generated.tables.Accountutenti;
 import generated.tables.Piatti;
 import model.Connessione;
@@ -17,17 +18,21 @@ class PersonaleTest {
 	public PersonaleTest(){
 		p = new Personale();
 	}
+	
+	//Test che verifica che il personale possa effettuare il login in modo corretto
 	@Test void loginTest() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		//verifico se trova la matricola
-		boolean result = dslContext.fetchExists(dslContext.selectFrom(Accountutenti.ACCOUNTUTENTI).where(
-				Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(1086785)));
+		boolean result = dslContext.fetchExists(dslContext.selectFrom(Accountpersonale.ACCOUNTPERSONALE).where(
+				Accountpersonale.ACCOUNTPERSONALE.USERNAME.eq("personale1")));
 		assertTrue(result);
 		//verifico se a quella matricola è associata la password corretta
 		assertTrue(p.login("personale1", "mensa77"));
+		assertFalse(p.login("personale1", "1234"));
 	}
 	
+	//Tst che verifica che il personale possa creare un nuovo piatto da aggiunngere  al menù
 	@Test void creaPiattoTest() {
 		p.creaNuovoPiatto("Spezzatino di maiale", "Lo spezzatino di maiale è un "
 				+ "piatto rustico fatto con cubetti di carne di maiale cotti "
@@ -41,6 +46,8 @@ class PersonaleTest {
 				Piatti.PIATTI.NOME.eq("Spezzatino di maiale")));
 		assertTrue(result);
 		
+		
+		//eliminazione del piatto creato dal database
 		dslContext.deleteFrom(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Spezzatino di maiale")).execute();
 	}
 	

@@ -70,6 +70,7 @@ class PiattoTest {
 		int fine=nFin.getFirst().value1();
 		assertEquals(30, fine-inizio);
 		
+		//eliminazione porzioni aggiunte
 		p.setNumeroPorzioni("Braciola di maiale", inizio);
 		
 	}
