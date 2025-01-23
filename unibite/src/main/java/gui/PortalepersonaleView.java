@@ -21,6 +21,7 @@ import controller.Piatto;
 import java.util.List;
 
 import org.jooq.Record2;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @PageTitle("Portale personale")
 @Route("my-view9")
@@ -79,7 +80,8 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		textSmall.setText(
 				"Per aggiungere un piatto al menù, selezionalo e clicca \"Aggiungi quantità\". "
 				+ "Per eliminarlo dal menù, selezionalo e clicca \"Elimina piatto\". "
-				+ "Per aggiungere una ricetta seleziona \"Aggiungi ricetta\".");
+				+ "Per aggiungere una ricetta seleziona \"Aggiungi ricetta\". "
+				+ "Ricorda che devono essere disponibili almeno 3 piatti diversi per ogni categoria");
 		textSmall.setWidth("100%");
 		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
 		layoutRow3.setWidthFull();
@@ -159,9 +161,14 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 		layoutColumn3.add(buttonPrimary3);
 		layoutColumn3.add(layoutColumn4);
 		layoutColumn3.add(buttonPrimary4);
-
+		
+		
+		
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view10"));
-		buttonPrimary.addClickListener(event -> UI.getCurrent().navigate(""));
+		buttonPrimary.addClickListener(event -> {
+			
+			UI.getCurrent().navigate("");
+		});
 		Personale p = new Personale();
 		buttonPrimary3.addClickListener(event -> {
 			p.aggiungiPorzioni(grid.getSelectedItems(), numberField.getValue());
@@ -173,8 +180,10 @@ public class PortalepersonaleView extends Composite<VerticalLayout> {
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
 		
-		            
-		 
+		UI.getCurrent().getPage().executeJs("setInterval(() => location.reload(), 10000);");
+
+		
 	}
 	
+
 }
