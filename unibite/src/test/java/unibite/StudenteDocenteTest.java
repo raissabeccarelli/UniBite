@@ -29,9 +29,13 @@ class StudenteDocenteTest {
 	
 	//verifica che il conto virtuale sia pari a 0 quando creo un nuovo studente
 	@Test public void contoVirtualeTest() {
-		//abbiamo creato uno studente con matricola 1088068 per verificare 
-		//che appena creato il conto fosse settato direttamente a 0
-		assertEquals(0, s.getContoVirtuale(1088068));
+		StudenteDocente stu=new StudenteDocente(1088068, "Davi", "Davide", "Carissoni", "d.carissoni@studenti.unibg.it", 2, 0);
+		assertEquals(0, stu.getContoVirtuale(stu.getMatricola()));
+		
+		Connessione connessione = Connessione.getInstance();
+		DSLContext dslContext = connessione.getDslContext();
+		dslContext.deleteFrom(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(stu.getMatricola())).execute();
+		
 	}
 
 

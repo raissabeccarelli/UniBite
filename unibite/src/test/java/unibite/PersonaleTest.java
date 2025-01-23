@@ -40,6 +40,8 @@ class PersonaleTest {
 		boolean result = dslContext.fetchExists(dslContext.selectFrom(Piatti.PIATTI).where(
 				Piatti.PIATTI.NOME.eq("Spezzatino di maiale")));
 		assertTrue(result);
+		
+		dslContext.deleteFrom(Piatti.PIATTI).where(Piatti.PIATTI.NOME.eq("Spezzatino di maiale")).execute();
 	}
 	
 }
