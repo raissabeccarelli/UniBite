@@ -17,7 +17,7 @@ class PersonaleTest {
 	public PersonaleTest(){
 		p = new Personale();
 	}
-	@Test public void loginTest() {
+	@Test void loginTest() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		//verifico se trova la matricola
@@ -28,7 +28,7 @@ class PersonaleTest {
 		assertTrue(p.login("personale1", "mensa77"));
 	}
 	
-	@Test public void creaPiattoTest() {
+	@Test void creaPiattoTest() {
 		p.creaNuovoPiatto("Spezzatino di maiale", "Lo spezzatino di maiale è un "
 				+ "piatto rustico fatto con cubetti di carne di maiale cotti "
 				+ "lentamente in un soffritto di cipolla, carota e sedano, "

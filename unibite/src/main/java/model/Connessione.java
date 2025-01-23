@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
-public class Connessione {
+public final class Connessione {
 	public final static String DB_REL_FILE = "..\\unibite\\src\\main\\resources\\UNIBitedb.db";
 	public final static String URL_DB = "jdbc:sqlite:" + DB_REL_FILE;
 

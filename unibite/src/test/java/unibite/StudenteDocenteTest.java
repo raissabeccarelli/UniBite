@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.jooq.DSLContext;
 import org.junit.jupiter.api.Test;
 
+import controller.FasciaIsee;
 import controller.StudenteDocente;
 import generated.tables.Accountutenti;
 import model.Connessione;
@@ -16,7 +17,7 @@ class StudenteDocenteTest {
 	}
 	
 	//verifica che il login avvenga correttamente
-	@Test public void loginTest() {
+	@Test void loginTest() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		//verifico se trova la matricola
@@ -28,8 +29,8 @@ class StudenteDocenteTest {
 	}
 	
 	//verifica che il conto virtuale sia pari a 0 quando creo un nuovo studente
-	@Test public void contoVirtualeTest() {
-		StudenteDocente stu=new StudenteDocente(1088068, "Davi", "Davide", "Carissoni", "d.carissoni@studenti.unibg.it", 2, 0);
+	@Test void contoVirtualeTest() {
+		StudenteDocente stu=new StudenteDocente(1088068, "Davi", "Davide", "Carissoni", "d.carissoni@studenti.unibg.it",FasciaIsee.A, 0);
 		assertEquals(0, stu.getContoVirtuale(stu.getMatricola()));
 		
 		Connessione connessione = Connessione.getInstance();

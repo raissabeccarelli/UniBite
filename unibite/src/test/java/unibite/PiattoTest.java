@@ -30,7 +30,7 @@ class PiattoTest {
 
 	
 	//Test che verifica che ad un piatto di una portata casuale venga associato il prezzo corretto
-	@Test public void testPrezzo() {
+	@Test void testPrezzo() {
 		Random r = new Random();
 		int portata = r.nextInt(4)+1;
 		
@@ -57,7 +57,7 @@ class PiattoTest {
 	}
 	
 	//test che verifica che si possano settare le porzioni desiderate di un piato in modo corretto
-	@Test public void testSetPorzioni() {
+	@Test void testSetPorzioni() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		Result<Record1<Integer>> nIniz = dslContext.select(Piatti.PIATTI.NUMEROPORZIONI)

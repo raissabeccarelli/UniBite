@@ -20,20 +20,20 @@ class ConnessioneTest {
 		}
 
 	//Test che verifica che la connessione sia aperta correttamente
-	@Test public void testAperturaConnessione() {
+	@Test void testAperturaConnessione() {
 		assertNotNull(connessione);
 		assertNotNull(dslContext);
 		assertFalse(connessione.isClose());
 	}
 	
 	//Test che verifica che la connessione venga chiusa correttamente
-	@Test public void testChiusuraConnessione() {
+	@Test void testChiusuraConnessione() {
 		connessione.close();
 		assertTrue(connessione.isClose());
 	}
 
 	//Test per verificare che venga aperta solo una connessione (Singleton)
-	@Test public void testConn() {
+	@Test void testConn() {
 		assertSame(connessione, c);
 	}
 

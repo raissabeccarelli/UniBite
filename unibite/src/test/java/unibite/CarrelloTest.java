@@ -4,25 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 import org.jooq.DSLContext;
 import org.jooq.Record1;
 import org.jooq.Result;
 import org.junit.jupiter.api.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import controller.Carrello;
-import controller.Piatto;
-import controller.TipoPortata;
 import generated.tables.Piatti;
 import model.Connessione;
 
@@ -34,22 +27,22 @@ class CarrelloTest {
 	}
 
 	//Test che controlla che la matricoa associata al carrello sia corretta
-	@Test public void testgetMatricola() {
+	@Test void testgetMatricola() {
 		assertEquals(1, c.getMatricola());
 	}
 	
 	//Test che verifica che la creazione del carrello crei una lista vuota
-	@Test public void testgetLista() {
+	@Test void testgetLista() {
 		assertTrue(c.getLista().isEmpty());
 	}
 	
 	//verifica che il prezzo iniziale del carrello sia zero
-	@Test public void testPrezzoIniziale() {
+	@Test void testPrezzoIniziale() {
 		assertEquals(BigDecimal.ZERO, c.elaboraPrezzo());
 	}
 	
 	//Test che verifica che si possa aggiungere un piatto correttamente al carrello
-	@Test public void testAggiungiPiatto() {
+	@Test void testAggiungiPiatto() {
 		//aggiunge piatto al carrello
 		c.aggiungiPiatto("Braciola di maiale");
 		assertEquals("Braciola di maiale", c.getLista().get(0).getKey());
@@ -61,7 +54,7 @@ class CarrelloTest {
 	}
 	
 	//Test che verifica che si possa aggiungere un primo piatto con formaggio correttamente al carrello
-		@Test public void testAggiungiPiattoFormaggio() {
+		@Test void testAggiungiPiattoFormaggio() {
 			c.aggiungiPiattoConFormaggio("Pasta al ragù");
 			assertEquals("Pasta al ragù", c.getLista().getFirst().getKey());
 			assertEquals("Aggiungi Formaggio", c.getLista().getFirst().getValue());
@@ -75,7 +68,7 @@ class CarrelloTest {
 	  
 	//Test che verifica che l'aggiunta di un piatto al carrello diminuisca le porzioni nel database 
 	//e che la successiva rimozione di questo piatto aumenti correttamente le porzioni nel database
-	@Test public void testdiminuisciPiatto() {
+	@Test void testdiminuisciPiatto() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
 		Result<Record1<Integer>> nIniz = dslContext.select(Piatti.PIATTI.NUMEROPORZIONI)
@@ -100,7 +93,7 @@ class CarrelloTest {
 	}
 	
 	//Test che verifica che venga calcolato correttamente il prezzo di un menù
-	@Test public void testPrezzoCorretto() {
+	@Test void testPrezzoCorretto() {
 		c.aggiungiPiatto("Pasta al ragù");
 		c.aggiungiPiatto("Braciola di maiale");
 		c.aggiungiPiatto("Broccoli");

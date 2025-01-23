@@ -80,13 +80,14 @@ public class PortaleordinazioneView extends Composite<VerticalLayout> implements
 		Image pesce3 = new Image("images/pesce.jpg", pe);
 		
 		//lista dei contorni
+		String co = "contorno";
 		List<Record2<String,String>> contorni=contorni();
 		Record2<String, String> contorni1 = contorni.get(0);
 		Record2<String, String> contorni2 = contorni.get(1);
 		Record2<String, String> contorni3 = contorni.get(2);
-		Image contorno = new Image("images/contorno.jpg", "contorno");
-		Image contorno2 = new Image("images/contorno.jpg", "contorno");
-		Image contorno3 = new Image("images/contorno.jpg", "contorno");
+		Image contorno = new Image("images/contorno.jpg", co);
+		Image contorno2 = new Image("images/contorno.jpg", co);
+		Image contorno3 = new Image("images/contorno.jpg", co);
 		
 		//lista dei dolci e della frutta
 		List<Record2<String,String>> dolciFrutta=dolciFrutta();
