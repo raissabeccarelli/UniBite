@@ -79,15 +79,15 @@ public class Piatto {
 	public float setPrezzoUnitario(TipoPortata t) {
 
 		if (t.getValue() == 1) {
-			this.prezzoUnitario = (float) 01.99;
+			this.prezzoUnitario = (float) 1.99;
 		} else if (t.getValue() == 2) {
-			this.prezzoUnitario = (float) 02.69;
+			this.prezzoUnitario = (float) 2.69;
 		} else if (t.getValue() == 3) {
-			this.prezzoUnitario = (float) 00.69;
+			this.prezzoUnitario = (float) 0.69;
 		} else if (t.getValue() == 4) {
-			this.prezzoUnitario = (float) 00.99;
+			this.prezzoUnitario = (float) 0.99;
 		} else {
-			this.prezzoUnitario = (float) 00.0;
+			this.prezzoUnitario = (float) 0.0;
 		}
 		return this.prezzoUnitario;
 	}
