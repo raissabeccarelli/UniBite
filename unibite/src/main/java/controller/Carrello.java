@@ -17,7 +17,12 @@ import generated.tables.*;
 import model.Connessione;
 
 public class Carrello {
+	//inizializzazione logger;	
 	private static final Logger LOGGER = LogManager.getLogger(Carrello.class);
+	/*creazione lista dei piatti nel carrello
+	 * nel primo string è inserito il nome del piatto
+	 * nel secondo string è inserito, se richiesto, "Aggiungi Formaggio"
+	*/
 	public static List<Map.Entry<String, String>> piattiSelezionati = new ArrayList<>();
 	private int matricola;
 	
@@ -33,7 +38,8 @@ public class Carrello {
 	public List<Map.Entry<String, String>> getLista() {	
 		return piattiSelezionati;
 	}
-
+	
+	//metodo per elaborare il prezzo totale, usato per gli utenti esterni
 	public BigDecimal elaboraPrezzo() {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
@@ -47,6 +53,7 @@ public class Carrello {
 		return prezzoTot;
 	}
 	
+	//metodo per elaborare il prezzo totale scontato, usato per gli StudentiDocenti
 	public BigDecimal elaboraPrezzoScontato(int mat) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
@@ -61,17 +68,17 @@ public class Carrello {
 		List<Record1<Integer>> fascia = dslContext.select(Accountutenti.ACCOUNTUTENTI.FASCIAISEE)
 				.from(Accountutenti.ACCOUNTUTENTI).where(Accountutenti.ACCOUNTUTENTI.MATRICOLA.eq(mat)).fetch();
 		if(fascia.get(0).value1() == 1) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.8)));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.8))); //Fascia A
 		}else if(fascia.get(0).value1() == 2) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.6)));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.6))); //Fascia B
 		}else if(fascia.get(0).value1() == 3) {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.3)));
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.3))); //Fascia C
 		}else {
-			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.05)));}	
+			prezzoTot = prezzoTot.subtract(prezzoTot.multiply(BigDecimal.valueOf(0.05)));} //Resto delle fasce
 		return prezzoTot;
 	}
 	
-	
+	//metodo richiamato nel portale ordinazione, per aggiungere piatti al carrello
 	public  void aggiungiPiatto(String nome) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
@@ -89,6 +96,7 @@ public class Carrello {
 		}
 	}
 	
+	//metodo richiamato nel portale ordinazione, per aggiungere i piatti al carrello con il formaggio
 	public  void aggiungiPiattoConFormaggio(String nome) {
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
@@ -106,6 +114,7 @@ public class Carrello {
 		}
 	}
 	
+	//metodo per eliminare un piatto dal carrello
 	public  void eliminaPiatto(Set<Map.Entry<String, String>> selezione) {
 		int conta=0;
 		LOGGER.info(selezione);
@@ -121,21 +130,32 @@ public class Carrello {
 		.where(Piatti.PIATTI.NOME.eq(nomePiatto)).execute();
 	}
 	
-	
+	//lista di observer che saranno notificati
 	private final List<CarrelloObserver> observers = new ArrayList<>();
-		public void addObserver(CarrelloObserver observer) {
-	        observers.add(observer);
-	        LOGGER.info(observers);
-	    }
 
-	    public void removeObserver(CarrelloObserver observer) {
-	        observers.remove(observer);
-	    }
+	/* metodo per aggiungere un nuovo observer alla lista
+	 * questo permette a un oggetto che implementa l'interfaccia CarrelloObserver 
+	 * di essere notificato
+	*/
+	public void addObserver(CarrelloObserver observer) {
+	    observers.add(observer);
+	    LOGGER.info(observers);
+	}
 
-	    public void notifyObservers(String nomePiatto) {
-	        CarrelloObserver observer = observers.get(observers.size()-1);
-	            observer.onPiattoAggiunto(nomePiatto);
-	
-	    }
+	//metodo per rimuovere un osservatore dalla lista.
+	public void removeObserver(CarrelloObserver observer) {
+	    observers.remove(observer);
+	}
+
+	/*metodo per notificare gli osservatori quando avviene un'azione 
+	 * ovvero l'aggiunta di un piatto al carrello)
+	 */
+	public void notifyObservers(String nomePiatto) {
+	    //recupera l'ultimo osservatore aggiunto nella lista
+	    CarrelloObserver observer = observers.get(observers.size() - 1);
+	    //notifica l'osservatore chiamando il metodo definito nella sua interfaccia, passando il nome del piatto
+	    observer.onPiattoAggiunto(nomePiatto);
+	}
+
 
 }
