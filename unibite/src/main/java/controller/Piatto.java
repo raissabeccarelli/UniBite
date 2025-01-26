@@ -1,5 +1,6 @@
 package controller;
 
+//Import
 import java.math.BigDecimal;
 import java.util.List;
 import org.jooq.DSLContext;
@@ -17,6 +18,7 @@ public class Piatto {
 	public int numeroPorzioni;
 	public String immagine;
 
+	//Costruttore
 	public Piatto(String nome, String descrizione, String ingredienti, String allergeni, TipoPortata tipo,
 			float prezzoUnitario, String immagine, int numeroPorzioni) {
 		this.nome = nome;
@@ -27,8 +29,10 @@ public class Piatto {
 		this.prezzoUnitario = prezzoUnitario;
 		this.numeroPorzioni = numeroPorzioni;
 		this.immagine = immagine;
+		//Accesso al db
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
+		//Inserimento del piatto creato nella tabella dei piatti del db
 		dslContext.insertInto(Piatti.PIATTI)
 				.columns(Piatti.PIATTI.NOME, Piatti.PIATTI.DESCRIZIONE, Piatti.PIATTI.INGREDIENTI,
 						Piatti.PIATTI.ALLERGENI, Piatti.PIATTI.TIPOPORTATA, Piatti.PIATTI.PREZZOUNITARIO, Piatti.PIATTI.IMMAGINE, Piatti.PIATTI.NUMEROPORZIONI)
@@ -40,6 +44,7 @@ public class Piatto {
 
 	}
 
+	//Funzioni getter e setter
 	public String getNome() {
 		return nome;
 	}
@@ -76,6 +81,7 @@ public class Piatto {
 		return prezzoUnitario;
 	}
 
+	//Imposta per ogni piatto un prezzo prefissato a seconda del tipo di portata
 	public float setPrezzoUnitario(TipoPortata t) {
 
 		if (t.getValue() == 1) {
@@ -97,17 +103,21 @@ public class Piatto {
 	}
 
 	public void setNumeroPorzioni(String nome, int numeroPorzioni) {
+		//accesso al db
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
+		//Imposta il numero di porzioni del piatto desiderato al numero indicato
 		dslContext.update(Piatti.PIATTI).set(Piatti.PIATTI.NUMEROPORZIONI, numeroPorzioni)
 				.where(Piatti.PIATTI.NOME.eq(nome)).execute();
 
 	}
 
+	//Metodo che permette di estrarre tutti i piatti
 	public static List<Record2<String, Integer>> cercaPiatti() {
+		//accesso al db
 		Connessione connessione = Connessione.getInstance();
 		DSLContext dslContext = connessione.getDslContext();
-		//lista di piatti
+		//Ritorna una lista di piatti recante il nome del piatto ed il corrispondente numero di porzioni
 		return  dslContext.select(Piatti.PIATTI.NOME, Piatti.PIATTI.NUMEROPORZIONI)
 				.from(Piatti.PIATTI).fetch();
 	}
