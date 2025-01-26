@@ -27,9 +27,13 @@ import controller.StudenteDocente;
 
 @PageTitle("Login SD")
 @Route("my-view")
+//Login per gli utenti di tipo StudenteDocente
 public class LoginSDView extends Composite<VerticalLayout> {
 
 	public LoginSDView() {
+		//Impostazioni per il layout della view ed instanziazione 
+		//delle componenti principali
+		
 		H1 h1 = new H1();
 		VerticalLayout layoutColumn2 = new VerticalLayout();
 		H6 h6 = new H6();
@@ -51,10 +55,11 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		H4 h4 = new H4();
 		Button buttonPrimary2 = new Button();
 		Button buttonPrimary3 = new Button();
+		
 		getContent().setWidth("100%");
 		String style = "flex-grow";
 		getContent().getStyle().set(style, "1");
-		h1.setText("LOGIN");
+		h1.setText("LOGIN"); //Titolo della view
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
 		String width = "max-content";
 		h1.setWidth(width);
@@ -62,7 +67,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
 		layoutColumn2.getStyle().set(style, "1");
-		h6.setText("INSERISCI I TUOI DATI:");
+		h6.setText("INSERISCI I TUOI DATI:"); //Istruzioni per il login
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, h6);
 		h6.setWidth(width);
 		layoutRow.setWidthFull();
@@ -77,7 +82,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow2.getStyle().set(style, "1");
 		layoutRow2.setAlignItems(Alignment.CENTER);
 		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
-		matricola.setLabel("MATRICOLA");
+		matricola.setLabel("MATRICOLA"); //Spazio per inserire la matricola
 		layoutRow2.setAlignSelf(FlexComponent.Alignment.CENTER, matricola);
 		matricola.setWidth("200px");
 		layoutColumn3.setWidthFull();
@@ -91,7 +96,7 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow3.getStyle().set(style, "1");
 		layoutRow3.setAlignItems(Alignment.CENTER);
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
-		passwordField.setLabel("PASSWORD");
+		passwordField.setLabel("PASSWORD"); //Spazio per inserire la password
 		passwordField.setWidth("200px");
 		layoutColumn4.setWidthFull();
 		layoutColumn3.setFlexGrow(1.0, layoutColumn4);
@@ -113,6 +118,9 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow5.getStyle().set(style, "1");
 		layoutRow5.setAlignItems(Alignment.CENTER);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.CENTER);
+		//Bottone che avvia il contollo di matricola e password
+		//Se le credenziali inserite sono corrette, porta a PortaleordinazioneView
+		//altrimenti rimane in questa view
 		buttonPrimary.setText("ACCEDI");
 		buttonPrimary.addClickShortcut(com.vaadin.flow.component.Key.ENTER);
 		layoutRow5.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
@@ -131,12 +139,14 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow6.getStyle().set(style, "1");
 		layoutRow6.setAlignItems(Alignment.CENTER);
 		layoutRow6.setJustifyContentMode(JustifyContentMode.CENTER);
+		//Testo dedicato ad utenti di tipo StudenteDocete non ancora registarti
 		h4.setText("Non sei ancora registrato?");
 		h4.setWidth(width);
-		buttonPrimary2.setText("REGISTRATI");
+		buttonPrimary2.setText("REGISTRATI"); //Bottone che porta a RegistrazioneView
 		buttonPrimary2.setWidth("min-content");
 		buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
+		//Bottone che permette di tornare a UNIBiteView
 		buttonPrimary3.setText("TORNA INDIETRO");
 		layoutColumn6.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary3);
 		buttonPrimary3.setWidth("198px");
@@ -163,7 +173,11 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		layoutRow6.add(h4);
 		layoutRow6.add(buttonPrimary2);
 		layoutColumn6.add(buttonPrimary3);
+		
+		//Porta a RegistrazioneView
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view3"));
+		
+		//Porta a UNIBiteView
 		buttonPrimary3.addClickListener(event -> UI.getCurrent().navigate(""));
 
 		StudenteDocente sd = new StudenteDocente();
@@ -173,17 +187,16 @@ public class LoginSDView extends Composite<VerticalLayout> {
 		        VaadinSession.getCurrent().setAttribute("CARRELLO", null);
 		        StudenteDocente st = new StudenteDocente(matricola.getValue());
 				VaadinSession.getCurrent().setAttribute("SDC", st);
-				UI.getCurrent().navigate("my-view4");
+				UI.getCurrent().navigate("my-view4"); //Se le credenziali sono corrette porta a PortaleordinazioneView
 			}else {
 				 Notification notification = new Notification(
-		                    "Credenziali errate. Riprova.", 3000);
+		                    "Credenziali errate. Riprova.", 3000); //Notifica di credenziali errate
 		                notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
 		                notification.setPosition(Position.TOP_CENTER);
 		                notification.open();
 			}
 		});
-		// aggiungere pwd errata
-
+		
 	}
 
 }

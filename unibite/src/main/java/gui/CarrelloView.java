@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 
+//Visualizzazione del carrello con i piatti inseriti
 @PageTitle("Carrello")
 @Route("my-view6")
 public class CarrelloView extends Composite<VerticalLayout> {
@@ -44,10 +45,15 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		Grid<Map.Entry<String, String>> grid = new Grid<>();
 		BigDecimal prezzoTot;
 		if(sd == null) {
+			//Se l'utente non è StudenteDocente, elabora il prezzo intero del carrello
 			prezzoTot = c.elaboraPrezzo();			
 		}else {
+			//Se l'utente è StudenteDocente, elabora il prezzo scontato del carrello (in base alla fascia ISEE)
 			prezzoTot = c.elaboraPrezzoScontato(sd.getMatricola());			
 		}
+		
+		//Impostazioni per il layout della view ed instanziazione 
+		//delle componenti principali
 		
 		H1 h1 = new H1();
 		VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -65,16 +71,19 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		Button buttonPrimary2 = new Button();
 		HorizontalLayout layoutRow6 = new HorizontalLayout();
 		Button buttonPrimary3 = new Button();
-		Image image = new Image("images/logo.png", "logo");
+		
+		Image image = new Image("images/logo.png", "logo");//Immagine del logo del progetto
 		image.setWidth("250px"); // Imposta la larghezza
 		image.setHeight("250px"); // Imposta l'altezza
 		getContent().setWidth("100%");
 		getContent().setHeight("550px");
-		h1.setText("CARRELLO");
+		
+		h1.setText("CARRELLO"); //Titolo della view
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
 		String width = "max-content";
 		h1.setWidth(width);
 		layoutColumn2.setWidthFull();
+		
 		getContent().setFlexGrow(1.0, layoutColumn2);
 		layoutColumn2.setWidth("100%");
 		String style ="flex-grow";
@@ -101,17 +110,16 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		
 		grid.setWidth("600px");
 		grid.getStyle().set(style, "0");
-		// Imposta la larghezza delle colonne singolarmente
+		// Imposta la larghezza delle colonne
 		grid.addColumn(Map.Entry::getKey)  // Colonna per il nome del piatto
 		    .setHeader("Nome Piatto")
 		    .setKey("nome");
 		    
-
-		grid.addColumn(Map.Entry::getValue)  // Colonna per la descrizione
+        grid.addColumn(Map.Entry::getValue)  // Colonna per la descrizione
 		    .setHeader("Note")
 		    .setKey("note");
 		   
-		grid.setItems(piatti);
+		grid.setItems(piatti); //Visualizzazione dei piatti nella grid
 		
 		
 		layoutRow3.setWidthFull();
@@ -121,7 +129,8 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow3.getStyle().set(style, "1");
 		layoutRow3.setAlignItems(Alignment.CENTER);
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
-		h4.setText("TOTALE:");
+		
+		h4.setText("TOTALE:"); //Prezzo del carrello
 		h4.setWidth(width);
 		layoutRow5.setHeightFull();
 		layoutRow3.setFlexGrow(1.0, layoutRow5);
@@ -131,16 +140,19 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow5.setAlignItems(Alignment.START);
 		layoutRow5.setJustifyContentMode(JustifyContentMode.START);
 		h5.setText(prezzoTot.setScale(2, RoundingMode.HALF_UP).toString().concat("€"));
-		h5.setWidth(width);
+		h5.setWidth(width); //Spazio per mostrare il prezzo del carrello
+		
+		//Istruzioni per l'eliminazione di un prodotto dal carrello
 		textSmall.setText("Per eliminare un prodotto, selezionalo e clicca elimina");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
 		textSmall.setWidth(width);
 		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
-		buttonPrimary.setText("Elimina piatto ❌");
+		buttonPrimary.setText("Elimina piatto ❌"); //Bottone che permette di eliminare il piatto selezionato
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
 		String setMin = "min-content";
 		buttonPrimary.setWidth(setMin);
 		buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		
 		layoutRow4.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutRow4);
 		layoutRow4.addClassName(Gap.MEDIUM);
@@ -148,7 +160,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow4.getStyle().set(style, "1");
 		layoutRow4.setAlignItems(Alignment.CENTER);
 		layoutRow4.setJustifyContentMode(JustifyContentMode.CENTER);
-		buttonPrimary2.setText("CONTINUA AD ORDINARE");
+		buttonPrimary2.setText("CONTINUA AD ORDINARE"); //Bottone per tornare alla PortaleordinazioneView
 		layoutRow4.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary2);
 		buttonPrimary2.setWidth(setMin);
 		buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -159,7 +171,7 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow6.getStyle().set(style, "1");
 		layoutRow6.setAlignItems(Alignment.CENTER);
 		layoutRow6.setJustifyContentMode(JustifyContentMode.CENTER);
-		buttonPrimary3.setText("VAI AL PAGAMENTO");
+		buttonPrimary3.setText("VAI AL PAGAMENTO"); //Bottone che permette di procedere al pagamento
 		layoutRow4.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary3);
 		buttonPrimary3.setWidth(setMin);
 		buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -179,18 +191,23 @@ public class CarrelloView extends Composite<VerticalLayout> {
 		layoutRow4.add(buttonPrimary2);
 		layoutRow4.add(buttonPrimary3);
 		
+		//Porta a PortaleordinazioneView
 		buttonPrimary2.addClickListener(event -> UI.getCurrent().navigate("my-view4"));
 		
+		//Eliminazione del piatto selezionato dal carrello e refresh della view
 		buttonPrimary.addClickListener(event -> {
 			c.eliminaPiatto(grid.getSelectedItems());
 			UI.getCurrent().refreshCurrentRoute(isAttached());
 		});
 		
+		//Permette di procedere al pagamento solo se il carrello non è vuoto
 		buttonPrimary3.addClickListener(event -> { 
 			if(!c.getLista().isEmpty()) {
 				if(sd==null) {
-				UI.getCurrent().navigate("my-view8");
+					//Porta l'utente non di tipo StudenteDocente a ScontrinoView (può pagare solo alla cassa) 
+				    UI.getCurrent().navigate("my-view8");
 				}else {
+					//Porta l'utente di tipo StudenteDocente a PagamentoView
 					UI.getCurrent().navigate("my-view7");
 				}	
 		}
